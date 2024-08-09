@@ -5,7 +5,7 @@ const DogFeed = () => {
     const { data: posts, isPending, error } = useFetch('http://localhost:8000/posts');
 
     return ( 
-        <div className="feedPage feedborder">
+        <div className="feedPage full-withradius border">
             <h1>The Feed</h1>
             {error && <div>{ error }</div>}
             {isPending && <div>Loading...</div>}

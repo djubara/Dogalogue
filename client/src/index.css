@@ -34,17 +34,46 @@
   padding: 20px;
 }
 
+/* gives space to right of title */
 .titlespace {
   margin-right: 100px;
 }
 
+/* lowers buttons on navbar */
 .navbarmargintop {
   margin-top: 10px;
 }
 
-.feedborder {
-  border: 2px dashed #991a1a;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
+/* border around the feed */
+.border {
+	font-size: 1.6rem;
+	display: grid;
+	place-items: center;
+	min-height: 200px;
+	border: 8px solid;
+	padding: 1rem;
+}
+
+.full-withradius {
+	position: relative;
+	background: #fff;
+
+	/*The background extends to the outside edge of the padding. No background is drawn beneath the border.*/
+	background-clip: padding-box;
+
+	border: solid 8px transparent;
+	border-radius: 0.8rem;
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		margin: -8px; /* same as border width */
+		border-radius: inherit; /* inherit container box's radius */
+		background: linear-gradient(to left, turquoise, greenyellow);
+	}
 }
