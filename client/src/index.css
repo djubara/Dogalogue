@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import 'bootstrap/dist/css/bootstrap.css';
 
 * {
   margin: 0;
@@ -31,4 +32,19 @@
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
+}
+
+.titlespace {
+  margin-right: 100px;
+}
+
+.navbarmargintop {
+  margin-top: 10px;
+}
+
+.feedborder {
+  border: 2px dashed #991a1a;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
