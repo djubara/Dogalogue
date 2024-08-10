@@ -1,12 +1,16 @@
-import { model, Schema } from "mongoose"
+const { model, Schema } = require("mongoose")
 
 const dogSchema = new Schema({
     // meta
-    created: {
+    // created: {
+    //     type: Date,
+    //     required: true,
+    //     unique: false,
+    //     default: Date.now
+    createdAt: {
         type: Date,
-        required: true,
-        unique: false,
-        default: Date.now
+        default: Date.now,
+        get: timestamp => dateFormat(timestamp)
     },
     modified: {
         type: Date,
@@ -69,4 +73,4 @@ const dogSchema = new Schema({
 
 const Dog = model("Dog", dogSchema)
 
-export default Dog
+module.exports = Dog;

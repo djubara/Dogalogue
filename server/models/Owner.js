@@ -1,12 +1,16 @@
-import { model, Schema } from "mongoose";
+const { model, Schema } = require("mongoose");
 
 const ownerSchema = new Schema({
     // meta
-    created: {
+    // created: {
+    //     type: Date,
+    //     required: true,
+    //     unique: false,
+    //     default: Date.now
+    createdAt: {
         type: Date,
-        required: true,
-        unique: false,
-        default: Date.now
+        default: Date.now,
+        get: timestamp => dateFormat(timestamp)
     },
     modified: {
         type: Date,
@@ -34,3 +38,5 @@ const ownerSchema = new Schema({
 })
 
 const Owner = model("Owner", ownerSchema)
+
+module.exports = Owner
