@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose"
+const { model, Schema } = require("mongoose")
 
 const dogSchema = new Schema({
     // meta
@@ -73,5 +73,4 @@ const dogSchema = new Schema({
 
 const Dog = model("Dog", dogSchema)
 
-// export default Dog
 module.exports = Dog;

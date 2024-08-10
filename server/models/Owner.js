@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+const { model, Schema } = require("mongoose");
 
 const ownerSchema = new Schema({
     // meta
@@ -38,3 +38,5 @@ const ownerSchema = new Schema({
 })
 
 const Owner = model("Owner", ownerSchema)
+
+module.exports = Owner

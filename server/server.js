@@ -1,15 +1,3 @@
-// import "dotenv/config";
-// import express from 'express';
-
-// const app = express();
-// const port = process.env.PORT || 3000;
-
-
-// app.listen(port, () => {
-//     console.log(`Server is running on port ${port}`);
-// });
-
-
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -41,8 +29,10 @@ app.get('/', (req, res) => {
 });
 
 // Import routes
-const dogsRoutes = require('./routes/car');
-app.use('/api/dogs', dogsRoutes);
+
+// doesn't exist!!
+// const dogsRoutes = require('./routes/car');
+// app.use('/api/dogs', dogsRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
