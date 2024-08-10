@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 // Import routes
 
 // doesn't exist!!
-// const dogsRoutes = require('./routes/car');
+// const dogsRoutes = require('./routes/dogs');
 // app.use('/api/dogs', dogsRoutes);
 
 app.listen(port, () => {
