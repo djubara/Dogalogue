@@ -1,10 +1,12 @@
-const express = require('express');
-const { ApolloServer } = require('@apollo/server');
-const { expressMiddleware } = require('@apollo/server/express4');
-const path = require('path');
+import 'dotenv/config.js';
+import express from 'express';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
+import path from 'path';
+import mongoose from 'mongoose';
 
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+import { typeDefs, resolvers } from './schemas/index.js';
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,29 +15,40 @@ const server = new ApolloServer({
     resolvers,
 });
 
-const startApolloServer = async () => {
-    await server.start();
+await Promise.all([
+    server.start(),
+    mongoose.connect(process.env.MONGODB_URI, {
 
-    app.use(express.urlencoded({ extended: true }));
-    app.use(express.json());
+    })
+])
 
-    app.use('/graphql', expressMiddleware(server));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-    // if we're in production, serve client/dist as static assets
-    if (process.env.NODE_ENV === 'production') {
-        app.use(express.static(path.join(__dirname, '../client/dist')));
-
-        app.get('*', (req, res) => {
-            res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-        });
+app.use('/graphql', expressMiddleware(server, {
+    context: async ({ req }) => {
+        const token = req.headers.authorization?.trim().split(' ').at(-1);
+        if (!token) return {};
+        try {
+            return { user: await verifyToken(token) }
+        } catch {
+            console.error('Invalid token');
+            return {};
+        }
     }
-  
-    db.once('open', () => {
-        app.listen(PORT, () => {
-            console.log(`API server running on port ${PORT}!`);
-            console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
-        });
-    });
-};
+}));
 
-startApolloServer();
+// if we're in production, serve client/dist as static assets
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
+}
+
+app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+});
+
