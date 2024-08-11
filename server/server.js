@@ -25,7 +25,18 @@ await Promise.all([
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/graphql', expressMiddleware(server));
+app.use('/graphql', expressMiddleware(server, {
+    context: async ({ req }) => {
+        const token = req.headers.authorization?.trim().split(' ').at(-1);
+        if (!token) return {};
+        try {
+            return { user: await verifyToken(token) }
+        } catch {
+            console.error('Invalid token');
+            return {};
+        }
+    }
+}));
 
 // if we're in production, serve client/dist as static assets
 if (process.env.NODE_ENV === 'production') {

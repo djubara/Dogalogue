@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
+import { hash, compare } from "bcrypt";
 
-const dogSchema = new Schema(
+const userSchema = new Schema(
     {
         // meta
         // created: {
@@ -31,40 +32,6 @@ const dogSchema = new Schema(
             required: false,
             unique: false
         },
-        size: {
-            type: String,
-            enum: ["xs", "sm", "md", "lg", "xl"],
-            required: true,
-            unique: false
-        },
-        breed: {
-            type: String,
-            required: true,
-            unique: false
-        },
-        gender: {
-            type: String,
-            enum: ["female", "male"],
-            required: true,
-            unique: false
-        },
-        gotchaDate: {
-            type: Date,
-            required: true,
-            unique: false
-        },
-        altered: {
-            type: Boolean,
-            required: true,
-            unique: false
-        },
-        energyLevel: {
-            type: Number,
-            min: 0,
-            max: 5,
-            required: true,
-            unique: false
-        },
         photoUrl: {
             type: String,
             required: true,
@@ -73,10 +40,20 @@ const dogSchema = new Schema(
     },
     {
         id: true,
+        method: {
+            checkPassword: function (password) {
+                return bcrypt.compare(password, this.password)
+            }
+        },
         toJSON: {
             getters: true,
             virtuals: true,
         }
     })
+userSchema.pre("save", async function () {
+    if (this.isNew || this.isModified("password")) {
+        this.password = await hash(this.password, 10)
+    }
+})
 
-export default model("Dog", dogSchema)
+export default model("User", userSchema)
