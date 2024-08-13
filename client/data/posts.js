@@ -8,7 +8,7 @@ const posts = [
     {
         "id": 2,
         "title": "Lorem Ipsum",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "id": 3,
