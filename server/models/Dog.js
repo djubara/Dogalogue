@@ -1,25 +1,7 @@
-import { model, Schema } from "mongoose";
+import { get, model, Schema } from "mongoose";
 
 const dogSchema = new Schema(
     {
-        // meta
-        // created: {
-        //     type: Date,
-        //     required: true,
-        //     unique: false,
-        //     default: Date.now
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: timestamp => dateFormat(timestamp)
-        },
-        modified: {
-            type: Date,
-            required: true,
-            unique: false,
-            default: Date.now
-        },
-
         // profile data
         firstName: {
             type: String,
@@ -51,7 +33,8 @@ const dogSchema = new Schema(
         gotchaDate: {
             type: Date,
             required: true,
-            unique: false
+            unique: false,
+            get: timestamp => (new Date(timestamp)).toLocaleDateString("en-us"),
         },
         altered: {
             type: Boolean,
@@ -69,7 +52,19 @@ const dogSchema = new Schema(
             type: String,
             required: true,
             unique: false
-        }
+        },
+
+        // meta
+        created: {
+            type: Date,
+            default: (new Date(Date.now())).toISOString(),
+            get: timestamp => (new Date(timestamp)).toISOString(),
+        },
+        modified: {
+            type: Date,
+            default: (new Date(Date.now())).toISOString(),
+            get: timestamp => (new Date(timestamp)).toISOString()
+        },
     },
     {
         id: true,
