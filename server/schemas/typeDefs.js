@@ -1,7 +1,8 @@
 export default `#graphql
     type User {
         id: ID!
-        createdAt: String!
+
+        created: String!
         modified: String!
 
         email: String!
@@ -19,7 +20,6 @@ export default `#graphql
         firstName: String!
         lastName: String!
         photoUrl: String!
-
     }
 
     input LoginInput {
@@ -29,6 +29,7 @@ export default `#graphql
 
     type Query {
         me: User!
+        users: [User]!
     }
         
     type Mutation {

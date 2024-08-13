@@ -5,7 +5,7 @@ const userSchema = new Schema(
     {
         // credentials
         email: {
-            type: Date,
+            type: String,
             required: true,
             unique: true
         },
@@ -13,18 +13,6 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: false
-        },
-
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: timestamp => dateFormat(timestamp)
-        },
-        modified: {
-            type: Date,
-            required: true,
-            unique: false,
-            default: Date.now
         },
 
         // profile data
@@ -42,7 +30,21 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: false
-        }
+        },
+
+        // metadata
+        created: {
+            type: Date,
+            default: (new Date(Date.now())).toISOString(),
+            get: timestamp => (new Date(timestamp)).toISOString()
+        },
+        modified: {
+            type: Date,
+            unique: false,
+            default: (new Date(Date.now())).toISOString(),
+            get: timestamp => (new Date(timestamp)).toISOString()
+
+        },
     },
     {
         id: true,
