@@ -3,12 +3,18 @@ import { hash, compare } from "bcrypt";
 
 const userSchema = new Schema(
     {
-        // meta
-        // created: {
-        //     type: Date,
-        //     required: true,
-        //     unique: false,
-        //     default: Date.now
+        // credentials
+        email: {
+            type: Date,
+            required: true,
+            unique: true
+        },
+        password: {
+            type: String,
+            required: true,
+            unique: false
+        },
+
         createdAt: {
             type: Date,
             default: Date.now,
