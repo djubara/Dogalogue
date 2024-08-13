@@ -36,6 +36,9 @@ function Navbar() {
       <Nav.Item>
         <Nav.Link href="/profile">Profile</Nav.Link>
       </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/register">Register</Nav.Link>
+      </Nav.Item>
       {/* <Nav.Item>
         <Nav.Link eventKey="disabled" disabled>
           Disabled
