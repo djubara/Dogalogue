@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import posts from "../../data/posts";
 
-const FeedPosts = ({posts}) => {
+const FeedPosts = () => {
     return ( 
         <div className="feed-posts">
             {posts.map((post) => (
