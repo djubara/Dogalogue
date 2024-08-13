@@ -1,8 +1,19 @@
 import { GraphQLError } from "graphql"
+import jsonwebtoken from "jsonwebtoken"
+
 import { User, Dog } from "../models/index.js"
 import { createToken } from "../utils/auth.js"
+
 export default {
     Query: {
+        users: async () => {
+            return await User.find()
+        },
+
+        dogs: async () => {
+            return await Dog.find()
+        },
+
         me: async (parent, args, { user }) => {
             if (!user) {
                 throw new GraphQLError("You are not logged in.",
@@ -12,6 +23,10 @@ export default {
         }
     },
     Mutation: {
+        createDog: async (parent, { dog }) => {
+            return await Dog.create(dog)
+        },
+
         register: async (parent, { user }) => {
             return createToken(await User.create(user))
 

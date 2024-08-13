@@ -1,7 +1,8 @@
 export default `#graphql
     type User {
         id: ID!
-        createdAt: String!
+
+        created: String!
         modified: String!
 
         email: String!
@@ -12,14 +13,55 @@ export default `#graphql
         photoUrl: String!
     }
 
-    input RegisterInput {    
+    input UserCreationInput {    
         email: String!
         password: String!
 
         firstName: String!
         lastName: String!
         photoUrl: String!
+    }
 
+    enum DogSize {
+        xs
+        sm
+        md
+        lg
+        xl
+    }
+
+    enum DogGender {
+        male
+        female
+    }
+
+    type Dog {
+        id: ID!
+
+        firstName: String!
+        lastName: String!
+        size: DogSize!
+        breed: String!
+        gender: DogGender!
+        gotchaDate: String!
+        altered: Boolean!
+        energyLevel: Int!
+        photoUrl: String!
+
+        created: String!
+        modified: String!
+    }
+
+    input DogCreationInput {
+        firstName: String!
+        lastName: String!
+        size: DogSize!
+        breed: String!
+        gender: DogGender!
+        gotchaDate: String!
+        altered: Boolean!
+        energyLevel: Int!
+        photoUrl: String!
     }
 
     input LoginInput {
@@ -29,10 +71,13 @@ export default `#graphql
 
     type Query {
         me: User!
+        users: [User]!
+        dogs: [Dog]!
     }
         
     type Mutation {
-        register(user: RegisterInput!): String!
+        createDog(dog: DogCreationInput!): Dog!
+        register(user: UserCreationInput!): String!
         login(credentials: LoginInput!): String!
     }
 `;
