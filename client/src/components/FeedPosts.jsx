@@ -10,9 +10,11 @@ const FeedPosts = () => {
                     <Link to={`/post/${post.id}`}>
                         <div className="postbox align-items-center">
                             <img className="postimage" src={doggo} />
-                            <div className="postcontent">
-                                <h2>{post.title}</h2>
-                                <p>{post.content}</p>
+                            <div className="talk-bubble tri-right left-in round talk-bubble-border">
+                                <div className="talktext">
+                                    <h2>{post.title}</h2>
+                                    <p>{post.content}</p>
+                                </div>
                             </div>
                         </div>
                     </Link>
