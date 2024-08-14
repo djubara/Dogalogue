@@ -28,7 +28,7 @@ This website will be for dog owners who are looking to meet other folks who have
 
 ![image](./assets/images/uofm-fsw-project-3.png)
 
-### Remi the Inspiration
+### Remi "The Inspiration" Engelsgjerd
 
 ![image](./client/public/assets/remi.jpg)
 
@@ -76,7 +76,7 @@ In order to install this program, you can clone the repository titled Dogalogue 
 
 > ## Usage
 
-Once you’ve entered the deployed application. You will be prompted to register an account. You will enter your email and password to create an account. Once logged in, you’ll be able to search for National Parks. You can add parks to your wishlist or already visited to track your progress!
+Once you’ve started the deployed application. You will be prompted to register an account. You will enter your email and password to create an account. Once logged in, you’ll be able to search for dogs you want your best friend to socialize with.
 
 > ## Contributors
 
