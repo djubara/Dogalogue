@@ -27,24 +27,18 @@ function Navbar() {
   return (
     <>
     <nav className="navbarmargintop">
-    {/* <h1>Dogalogue</h1> */}
-    <Nav  variant="tabs" defaultActiveKey="/home">
-    <h1 className="titlespace">Dogalogue</h1>
-      <Nav.Item>
-        <Nav.Link href="/">Dog House</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/profile">Profile</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/register">Register</Nav.Link>
-      </Nav.Item>
-      {/* <Nav.Item>
-        <Nav.Link eventKey="disabled" disabled>
-          Disabled
-        </Nav.Link>
-      </Nav.Item> */}
-    </Nav>
+      <Nav defaultActiveKey="/home">
+        <h1 className="titlespace">Dogalogue</h1>
+        <Nav.Item className="button">
+          <Nav.Link href="/">Dog House</Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="button">
+          <Nav.Link href="/profile">Profile</Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="button">
+          <Nav.Link href="/register">Register</Nav.Link>
+        </Nav.Item>
+      </Nav>
     </nav>
     </>
   );
