@@ -1,6 +1,6 @@
 import { GraphQLError } from "graphql"
 import { User, Pet } from "../models/index.js"
-import { createToken } from "../utils/token.js";
+import createToken from "../utils/token.js";
 
 
 export default {
