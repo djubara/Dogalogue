@@ -26,11 +26,14 @@ const userSchema = new Schema(
             required: true,
             unique: false
         },
-        photoUrl: {
-            type: String,
-            required: true,
-            unique: false
-        },
+
+        // pet data
+        pets: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Pet"
+            }
+        ],
 
         // metadata
         created: {
@@ -68,5 +71,39 @@ userSchema.pre("save", async function () {
 userSchema.methods.checkPassword = async function (password) {
     return compare(password, this.password);
 };
+
+//static register method
+userSchema.statics.register = async (email, password, firstName, lastName, photoUrl) => {
+    const exists = await this.findOne({ email})
+
+    if (exists) {
+        throw new Error('Email already in use')
+    }
+}
+
+//static login method
+userSchema.statics.login = async function(email, password) {
+
+
+    if(!email || !password) {
+        throw new Error('Invalid email or password')
+    }
+
+    const user = await this.findOne({ email })
+
+    if(!user) {
+        throw new Error('User not found')
+    }
+
+    const match = await bcrypt.compare(password, user.password)
+
+    if (!match) {
+        throw new Error('Invalid email or password')
+    }
+
+    return user;
+}
+
+
 
 export default model("User", userSchema)

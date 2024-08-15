@@ -44,7 +44,6 @@ export default `#graphql
 
         firstName: String!
         lastName: String!
-        photoUrl: String!
     }
 
     enum PetSize {

@@ -1,25 +1,4 @@
 import React from 'react';
-// import { Link, useLocation } from 'react-router-dom';
-
-// const Navbar = () => {
-// const currentPage = useLocation().pathname;
-
-//     return ( 
-//         <>
-//             <nav className="navbar fixed-top">
-//                 <h1>Dogalogue</h1>
-//                 <div className="links">
-//                     <Link to="/" className={currentPage === '/' ? 'nav-link active' : 'nav-link'}>Dog House</Link>
-//                     <Link to="/profile" className={currentPage === '/profile' ? 'nav-link active' : 'nav-link'}>Profile</Link>
-                    
-//                 </div>
-//             </nav>
-//         </>
-//      );
-// }
- 
-// export default Navbar;
-
 
 import Nav from 'react-bootstrap/Nav';
 
@@ -37,6 +16,9 @@ function Navbar() {
         </Nav.Item>
         <Nav.Item className="button">
           <Nav.Link href="/register">Register</Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="button">
+          <Nav.Link href="/login">Login</Nav.Link>
         </Nav.Item>
       </Nav>
     </nav>

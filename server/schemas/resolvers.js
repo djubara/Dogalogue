@@ -1,13 +1,12 @@
 import { GraphQLError } from "graphql"
-import jsonwebtoken from "jsonwebtoken"
-
 import { User, Pet } from "../models/index.js"
-import { createToken } from "../utils/auth.js"
+import { createToken } from "../utils/token.js";
+
 
 export default {
     Query: {
         users: async () => {
-            return await User.find()
+            return await User.find().populate("pets");
         },
 
         pets: async () => {
@@ -19,6 +18,7 @@ export default {
                 throw new GraphQLError("You are not logged in.",
                     { extensions: { code: "UNAUTHENTICATED" } })
             }
+            console.log(user);
             return User.findOne({ _id: user.id })
         }
     },
@@ -30,7 +30,10 @@ export default {
         register: async (parent, { user, pet }) => {
             const createdPet = await Pet.create(pet)
 
-            const createdUser = await User.create(user)
+            const createdUser = await User.create({
+                ...user,
+                pets: [createdPet._id]
+            })
             return {
                 token: createToken(createdUser),
                 user: createdUser

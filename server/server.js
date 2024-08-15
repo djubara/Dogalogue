@@ -10,6 +10,9 @@ import { typeDefs, resolvers } from './schemas/index.js';
 
 import { join, normalize, dirname } from "path"
 import { fileURLToPath } from 'url';
+import { authMiddleware } from './utils/auth.js';
+
+// import userRoutes from './routes/user.js';
 
 
 const PORT = process.env.PORT || 3001;
@@ -22,7 +25,10 @@ const server = new ApolloServer({
 await Promise.all([
     server.start(),
     mongoose.connect(process.env.MONGODB_URI, {})
-])
+]);
+
+// routes
+// app.use('/user', userRoutes);
 
 app.use('/usercontent/images', imagesRoutes)
 app.use('public', express.static("public"))
@@ -30,16 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/graphql', expressMiddleware(server, {
-    context: async ({ req }) => {
-        const token = req.headers.authorization?.trim().split(' ').at(-1);
-        if (!token) return {};
-        try {
-            return { user: await verifyToken(token) }
-        } catch {
-            console.error('Invalid token');
-            return {};
-        }
-    }
+    context: authMiddleware
 }));
 
 // if we're in production, serve client/dist as static assets
