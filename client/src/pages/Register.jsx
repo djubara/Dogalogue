@@ -24,7 +24,7 @@ function Register() {
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-6">
         <Form.Group as={Col} md="6" controlId="validationCustom01">
-          <Form.Label>First name</Form.Label>
+          <Form.Label>Email address</Form.Label>
           <Form.Control
             required
             type="text"
@@ -41,12 +41,16 @@ function Register() {
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group as={Col} md="6" className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control required type="email" placeholder="Enter email" />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
+      </Form.Group>
+      <Form.Group as={Col} md="6" className="mb-3" controlId="formGroupPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" />
       </Form.Group>
       </Row>
       <h2>Pet Information</h2>

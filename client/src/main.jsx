@@ -5,6 +5,7 @@ import App from './App.jsx';
 import DogFeed from './pages/DogFeed.jsx'
 import Profile from './pages/Profile.jsx';
 import Register from './pages/Register.jsx';
+import Login from './pages/Login.jsx';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />
+      },
+      {
+        path: '/login',
+        element: <Login />
       }
     ]
   },
