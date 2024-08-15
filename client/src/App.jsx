@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import DogFeed from './pages/DogFeed';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
+import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path = "/register" element = {<Register/>}/>`
         </Routes>
       </div>
+      <Footer/>
     </div>
     </Router>
   )
