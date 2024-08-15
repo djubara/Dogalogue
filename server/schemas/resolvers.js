@@ -1,7 +1,7 @@
 import { GraphQLError } from "graphql"
 import jsonwebtoken from "jsonwebtoken"
 
-import { User, Dog } from "../models/index.js"
+import { User, Pet } from "../models/index.js"
 import { createToken } from "../utils/auth.js"
 
 export default {
@@ -10,8 +10,8 @@ export default {
             return await User.find()
         },
 
-        dogs: async () => {
-            return await Dog.find()
+        pets: async () => {
+            return await Pet.find()
         },
 
         me: async (parent, args, { user }) => {
@@ -19,16 +19,16 @@ export default {
                 throw new GraphQLError("You are not logged in.",
                     { extensions: { code: "UNAUTHENTICATED" } })
             }
-            return User.findOne({ _id: user.id }) //.populate("dogs")
+            return User.findOne({ _id: user.id })
         }
     },
     Mutation: {
-        createDog: async (parent, { dog }) => {
-            return await Dog.create(dog)
+        createPet: async (parent, { pet }) => {
+            return await Pet.create(pet)
         },
 
-        register: async (parent, { user, dog }) => {
-            const createdDog = await Dog.create(dog)
+        register: async (parent, { user, pet }) => {
+            const createdPet = await Pet.create(pet)
 
             const createdUser = await User.create(user)
             return {
