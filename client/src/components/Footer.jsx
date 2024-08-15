@@ -6,7 +6,7 @@ const Footer = () => {
         <h2 className="FooterName">Dogalogue</h2>
         <div className="centered-divs">
         <div className="leftFooterBorder">
-            <a href='https://github.com/emulcahey' target="_blank">
+            <a href='https://github.com/djubara' target="_blank">
                 <img className="footerIcon" src={githubLogo} alt="github icon" />
             </a>
             <div>
@@ -14,7 +14,7 @@ const Footer = () => {
             </div>
         </div>
         <div className="leftFooterBorder">
-            <a href='https://github.com/emulcahey' target="_blank">
+            <a href='https://github.com/atengelsgjerdy' target="_blank">
                 <img className="footerIcon" src={githubLogo} alt="github icon" />
             </a>
             <div>
@@ -22,7 +22,7 @@ const Footer = () => {
             </div>
         </div>
         <div className="leftFooterBorder">
-            <a href='https://github.com/emulcahey' target="_blank">
+            <a href='https://github.com/davisonchs' target="_blank">
                 <img className="footerIcon" src={githubLogo} alt="github icon" />
             </a>
             <div>
@@ -30,7 +30,7 @@ const Footer = () => {
             </div>
         </div>
         <div className="leftFooterBorder">
-            <a href='https://github.com/emulcahey' target="_blank">
+            <a href='https://github.com/colepatters' target="_blank">
                 <img className="footerIcon" src={githubLogo} alt="github icon" />
             </a>
             <div>

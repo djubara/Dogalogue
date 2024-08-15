@@ -14,7 +14,8 @@
 	padding: 20px;
 	color: #402C25;
 	font-weight: bolder;
-  }
+	min-height: 100vh;
+}
 
 /*color palette*/
 .blue {
@@ -180,6 +181,8 @@
 	padding: 20px;
 	/* justify-content: space-evenly; */
 	color: #F2F2F2;
+	position: fixed;
+	left: 0;
 	bottom: 0;
 	width: 100%;
 	justify-self: flex-start;
