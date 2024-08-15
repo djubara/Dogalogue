@@ -8,6 +8,9 @@ import imagesRoutes from './routes/images.js'
 
 import { typeDefs, resolvers } from './schemas/index.js';
 
+import { join, normalize, dirname } from "path"
+import { fileURLToPath } from 'url';
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -43,10 +46,12 @@ app.use('/graphql', expressMiddleware(server, {
 
 // if we're in production, serve client/dist as static assets
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+    const currentDir = dirname(fileURLToPath(import.meta.url))
+
+    app.use(express.static(path.join(currentDir, '../client/dist')));
 
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+        res.sendFile(path.join(currentDir, '../client/dist/index.html'));
     });
 }
 
