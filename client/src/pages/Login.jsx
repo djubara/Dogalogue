@@ -6,8 +6,6 @@ import Row from 'react-bootstrap/Row';
 
 
 function Login() {
- 
-
   return (
     <>
     <h2>User Login</h2>
@@ -20,6 +18,7 @@ function Login() {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
+      <button type="submit">Login</button>
     </Form>
     </>
   );
