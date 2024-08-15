@@ -6,6 +6,14 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    open:true
+    open:true,
+    proxy: {
+      '/graphql': {
+        target: 'http://localhost:8080',
+        secure: false,
+        changeOrigin: true,
+      },
+      }
   }
 })
+

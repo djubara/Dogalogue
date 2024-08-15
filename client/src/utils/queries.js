@@ -43,4 +43,29 @@ export const QUERY_PET = gql`
             photoUrl
         }
     }
+}`;
+
+export const QUERY_ME = gql`
+query Query {
+  me {
+    email
+    password
+    firstName
+    lastName
+    created
+    modified
+    pets {
+      id
+      petName
+      size
+      breed
+      gender
+      gotchaDate
+      altered
+      energyLevel
+      photoUrl
+      created
+      modified
+    }
+  }
 }`
