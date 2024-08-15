@@ -18,12 +18,12 @@ const userSchema = new Schema(
         // profile data
         firstName: {
             type: String,
-            required: false,
+            required: true,
             unique: false
         },
         lastName: {
             type: String,
-            required: false,
+            required: true,
             unique: false
         },
         photoUrl: {

@@ -2,15 +2,40 @@ export default `#graphql
     type User {
         id: ID!
 
-        created: String!
-        modified: String!
-
         email: String!
         password: String!
 
         firstName: String!
         lastName: String!
         photoUrl: String!
+
+        created: String!
+        modified: String!
+    }
+
+    type Auth {
+        token: ID!
+        user: User!
+    }
+
+    type Comment {
+        id: ID!
+
+        author: User!
+        content: String!
+        created: String!
+    }
+
+    type Post {
+        id: ID!
+
+        author: User!
+        content: String!
+        photoUrl: String
+        comments: [Comment]!
+
+        created: String!
+        modified: String!
     }
 
     input UserCreationInput {    
@@ -77,7 +102,8 @@ export default `#graphql
         
     type Mutation {
         createDog(dog: DogCreationInput!): Dog!
-        register(user: UserCreationInput!): String!
-        login(credentials: LoginInput!): String!
+
+        register(user: UserCreationInput!, dog: DogCreationInput!): Auth
+        login(credentials: LoginInput!): Auth
     }
 `;
