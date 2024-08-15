@@ -58,10 +58,15 @@ const userSchema = new Schema(
             virtuals: true,
         }
     })
+
 userSchema.pre("save", async function () {
     if (this.isNew || this.isModified("password")) {
         this.password = await hash(this.password, 10)
     }
 })
+
+userSchema.methods.checkPassword = async function (password) {
+    return compare(password, this.password);
+};
 
 export default model("User", userSchema)
