@@ -18,9 +18,7 @@ const server = new ApolloServer({
 
 await Promise.all([
     server.start(),
-    mongoose.connect(process.env.MONGODB_URI, {
-
-    })
+    mongoose.connect(process.env.MONGODB_URI, {})
 ])
 
 app.use('/usercontent/images', imagesRoutes)

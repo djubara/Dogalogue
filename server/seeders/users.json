@@ -1,0 +1,42 @@
+[
+    {
+        "email": "bkernighan@techfriends.dev",
+        "password": "password01"
+    },
+    {
+        "email": "mkanatalexander@techfriends.dev",
+        "password": "password02"
+    },
+    {
+        "email": "wtls@techfriends.dev",
+        "password": "password03"
+    },
+    {
+        "email": "kbeck@techfriends.dev",
+        "password": "password04"
+    },
+    {
+        "email": "evberard@techfriends.dev",
+        "password": "password05"
+    },
+    {
+        "email": "akay@techfriends.dev",
+        "password": "password06"
+    },
+    {
+        "email": "choare@techfriends.dev",
+        "password": "password07"
+    },
+    {
+        "email": "dthomas@techfriends.dev",
+        "password": "password08"
+    },
+    {
+        "email": "dknuth@techfriends.dev",
+        "password": "password09"
+    },
+    {
+        "email": "lernantino@techfriends.dev",
+        "password": "password10"
+    }
+]
