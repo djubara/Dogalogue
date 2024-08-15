@@ -94,8 +94,6 @@ Once you’ve started the deployed application. You will be prompted to register
 
   Create a pull request or raise an issue.
   
-  >
-
   > ## Test Instructions
 
   N/A
