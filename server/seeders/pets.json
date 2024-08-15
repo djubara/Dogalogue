@@ -7,7 +7,8 @@
         "gender": "male",
         "gotchaDate": "2014-11-22",
         "photoUrl": "https://placehold.co/300x300",
-        "size": "lg"
+        "size": "lg",
+        "age": 8
     },
     {
         "altered": true,
@@ -17,7 +18,8 @@
         "gender": "male",
         "gotchaDate": "2005-05-13",
         "photoUrl": "https://placehold.co/300x300",
-        "size": "lg"
+        "size": "lg",
+        "age": 14
     },
     {
         "altered": true,
@@ -27,7 +29,8 @@
         "gender": "male",
         "gotchaDate": "2023-04-14",
         "photoUrl": "https://placehold.co/300x300",
-        "size": "sm"
+        "size": "sm",
+        "age": 9
     },
     {
         "altered": true,
@@ -37,7 +40,8 @@
         "gender": "male",
         "gotchaDate": "2017-10-23",
         "photoUrl": "https://placehold.co/300x300",
-        "size": "lg"
+        "size": "lg",
+        "age": 10
     },
     {
         "altered": true,
@@ -47,6 +51,7 @@
         "gender": "female",
         "gotchaDate": "2016-08-26",
         "photoUrl": "https://placehold.co/300x300",
-        "size": "md"
+        "size": "md",
+        "age": 10
     }
 ]
