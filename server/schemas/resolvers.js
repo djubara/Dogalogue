@@ -27,9 +27,13 @@ export default {
             return await Dog.create(dog)
         },
 
-        register: async (parent, { user }) => {
-            return createToken(await User.create(user))
-
+        register: async (parent, { user, dog }) => {
+            // TODO register dog before creating user
+            const createdUser = await User.create(user)
+            return {
+                token: createToken(createdUser),
+                user: createdUser
+            }
         },
         login: async (parent, { credentials }, ctx) => {
             if (ctx.user) {
