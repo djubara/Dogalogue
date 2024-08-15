@@ -47,7 +47,7 @@ export default `#graphql
         photoUrl: String!
     }
 
-    enum DogSize {
+    enum PetSize {
         xs
         sm
         md
@@ -55,19 +55,18 @@ export default `#graphql
         xl
     }
 
-    enum DogGender {
+    enum PetGender {
         male
         female
     }
 
-    type Dog {
+    type Pet {
         id: ID!
 
-        firstName: String!
-        lastName: String!
-        size: DogSize!
+        petName: String!
+        size: PetSize!
         breed: String!
-        gender: DogGender!
+        gender: PetGender!
         gotchaDate: String!
         altered: Boolean!
         energyLevel: Int!
@@ -77,12 +76,12 @@ export default `#graphql
         modified: String!
     }
 
-    input DogCreationInput {
-        firstName: String!
-        lastName: String!
-        size: DogSize!
+    input PetCreationInput {
+        petName: String!
+
+        size: PetSize!
         breed: String!
-        gender: DogGender!
+        gender: PetGender!
         gotchaDate: String!
         altered: Boolean!
         energyLevel: Int!
@@ -97,13 +96,13 @@ export default `#graphql
     type Query {
         me: User!
         users: [User]!
-        dogs: [Dog]!
+        pets: [Pet]!
     }
         
     type Mutation {
-        createDog(dog: DogCreationInput!): Dog!
+        createPet(pet: PetCreationInput!): Pet!
 
-        register(user: UserCreationInput!, dog: DogCreationInput!): Auth
+        register(user: UserCreationInput!, pet: PetCreationInput!): Auth
         login(credentials: LoginInput!): Auth
     }
 `;

@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+
 function Register() {
   const [validated, setValidated] = useState(false);
 
@@ -42,7 +43,7 @@ function Register() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control required type="email" placeholder="Enter email" />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -63,9 +64,11 @@ function Register() {
           <Form.Label>Pet Size</Form.Label>
           <Form.Select defaultValue="Choose...">
             <option>Choose...</option>
+            <option>XL</option>
             <option>Large</option>
             <option>Medium</option>
             <option>Small</option>
+            <option>xs</option>
           </Form.Select>
         </Form.Group>
     </Row>
@@ -88,6 +91,43 @@ function Register() {
             placeholder="Pet breed"
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} controlId="formGridState">
+          <Form.Label>Pet Gender</Form.Label>
+          <Form.Select defaultValue="Choose...">
+            <option>Choose...</option>
+            <option>Male</option>
+            <option>Female</option>
+          </Form.Select>
+        </Form.Group>
+        </Row>
+        <Row className="mb-6">
+        <Form.Group as={Col}  controlId="validationCustom01">
+          <Form.Label >Pet's Gotcha Date!</Form.Label>
+          <Form.Control
+            required
+            type="date"
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} controlId="formGridState">
+          <Form.Label>Is your pet altered?</Form.Label>
+          <Form.Select defaultValue="Choose...">
+            <option>Choose...</option>
+            <option>Yes</option>
+            <option>No</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group as={Col} controlId="formGridState">
+          <Form.Label>Pet's Energy Level</Form.Label>
+          <Form.Select defaultValue="Choose...">
+            <option>Choose...</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Form.Select>
         </Form.Group>
     </Row>
     <Form.Group>

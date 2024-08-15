@@ -1,18 +1,14 @@
 import { get, model, Schema } from "mongoose";
 
-const dogSchema = new Schema(
+const petSchema = new Schema(
     {
         // profile data
-        firstName: {
+        petName: {
             type: String,
             required: false,
             unique: false
         },
-        lastName: {
-            type: String,
-            required: false,
-            unique: false
-        },
+
         size: {
             type: String,
             enum: ["xs", "sm", "md", "lg", "xl"],
@@ -74,4 +70,4 @@ const dogSchema = new Schema(
         }
     })
 
-export default model("Dog", dogSchema)
+export default model("Pet", petSchema)
