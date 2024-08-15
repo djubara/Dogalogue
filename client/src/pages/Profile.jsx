@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 // import profile from '../../data/profile';
-import remi from "../../public/assets/remi.jpg";
+// import remi from "../../public/assets/remi.jpg";
 
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
