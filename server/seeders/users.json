@@ -1,0 +1,72 @@
+[
+    {
+        "email": "bkernighan@techfriends.dev",
+        "password": "password01",
+        "firstName": "Bert",
+        "lastName": "Kernighan",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "mkanatalexander@techfriends.dev",
+        "password": "password02",
+        "firstName": "Mona",
+        "lastName": "Kanatalexander",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "wtls@techfriends.dev",
+        "password": "password03",
+        "firstName": "Will",
+        "lastName": "Tls",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "kbeck@techfriends.dev",
+        "password": "password04",
+        "firstName": "Kim",
+        "lastName": "Beck",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "evberard@techfriends.dev",
+        "password": "password05",
+        "firstName": "Evan",
+        "lastName": "Berard",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "akay@techfriends.dev",
+        "password": "password06",
+        "firstName": "Ashley",
+        "lastName": "Kay",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "choare@techfriends.dev",
+        "password": "password07",
+        "firstName": "Conan",
+        "lastName": "Hoare",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "dthomas@techfriends.dev",
+        "password": "password08",
+        "firstName": "Daniel",
+        "lastName": "Thomas",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "dknuth@techfriends.dev",
+        "password": "password09",
+        "firstName": "David",
+        "lastName": "Knuth",
+        "photoUrl": "https://placehold.co/300x300"
+    },
+    {
+        "email": "lernantino@techfriends.dev",
+        "password": "password10",
+        "firstName": "Leonnard",
+        "lastName": "Ernantino",
+        "photoUrl": "https://placehold.co/300x300"
+    }
+]

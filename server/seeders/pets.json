@@ -1,0 +1,52 @@
+[
+    {
+        "altered": true,
+        "breed": "German Shorthair",
+        "energyLevel": 1,
+        "petName": "Pete",
+        "gender": "male",
+        "gotchaDate": "2014-11-22",
+        "photoUrl": "https://placehold.co/300x300",
+        "size": "lg"
+    },
+    {
+        "altered": true,
+        "breed": "Black Lab",
+        "energyLevel": 2,
+        "petName": "Jack",
+        "gender": "male",
+        "gotchaDate": "2005-05-13",
+        "photoUrl": "https://placehold.co/300x300",
+        "size": "lg"
+    },
+    {
+        "altered": true,
+        "breed": "Gray Shorthair",
+        "energyLevel": 1,
+        "petName": "Weddel",
+        "gender": "male",
+        "gotchaDate": "2023-04-14",
+        "photoUrl": "https://placehold.co/300x300",
+        "size": "sm"
+    },
+    {
+        "altered": true,
+        "breed": "Yellow Lab",
+        "energyLevel": 3,
+        "petName": "Murphy",
+        "gender": "male",
+        "gotchaDate": "2017-10-23",
+        "photoUrl": "https://placehold.co/300x300",
+        "size": "lg"
+    },
+    {
+        "altered": true,
+        "breed": "American Pitbull",
+        "energyLevel": 5,
+        "petName": "Hope",
+        "gender": "female",
+        "gotchaDate": "2016-08-26",
+        "photoUrl": "https://placehold.co/300x300",
+        "size": "md"
+    }
+]
