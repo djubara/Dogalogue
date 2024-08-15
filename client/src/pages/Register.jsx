@@ -8,12 +8,6 @@ import Row from 'react-bootstrap/Row';
 function Register() {
   const [validated, setValidated] = useState(false);
 
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleChange = (event) => {
-    setIsChecked(event.target.checked);
-  };
-
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
