@@ -1,5 +1,7 @@
 > # Dogalogue
 
+ > ![Github license](https://img.shields.io/badge/license-MIT-blue.svg)
+
   > ## Table of Contents
 
   1. [Description:](#description)
