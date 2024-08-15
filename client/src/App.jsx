@@ -32,7 +32,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 function App() {
  
   return (
@@ -42,6 +41,7 @@ function App() {
       <div className = "content">
         <Outlet/>
       </div>
+      <Footer/>
     </div>
     </ApolloProvider>
   )

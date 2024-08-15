@@ -6,7 +6,7 @@ const DogFeed = () => {
 
     return ( 
         <div className="feedPage full-withradius border">
-            <h1>The Feed</h1>
+            <h1 className="feed-title">The Feed</h1>
            
              <FeedPosts  />
         </div>

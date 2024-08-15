@@ -12,8 +12,8 @@ const FeedPosts = () => {
                             <img className="postimage" src={doggo} />
                             <div className="talk-bubble tri-right left-in round talk-bubble-border">
                                 <div className="talktext">
-                                    <h2>{post.title}</h2>
-                                    <p>{post.content}</p>
+                                    <h2 className="text-decoration-none">{post.title}</h2>
+                                    <p className="text-decoration-none">{post.content}</p>
                                 </div>
                             </div>
                         </div>
