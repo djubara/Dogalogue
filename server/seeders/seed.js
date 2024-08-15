@@ -5,7 +5,7 @@ import { readFile } from "fs/promises"
 import "dotenv/config"
 
 async function seed() {
-    const db = await mongoose.connect(process.env.MONGODB_URI, {})
+    const db = await mongoose.connect(process.env.MONGODB_URI)
 
     try {
         await clearDb(db,'Pet', 'pets');
