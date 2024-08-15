@@ -1,5 +1,7 @@
 > # Dogalogue
 
+ > ![Github license](https://img.shields.io/badge/license-MIT-blue.svg)
+
   > ## Table of Contents
 
   1. [Description:](#description)
@@ -94,8 +96,6 @@ Once you’ve started the deployed application. You will be prompted to register
 
   Create a pull request or raise an issue.
   
-  >
-
   > ## Test Instructions
 
   N/A
