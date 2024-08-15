@@ -4,6 +4,7 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import path from 'path';
 import mongoose from 'mongoose';
+import imagesRoutes from './routes/images.js'
 
 import { typeDefs, resolvers } from './schemas/index.js';
 
@@ -22,6 +23,8 @@ await Promise.all([
     })
 ])
 
+app.use('/usercontent/images', imagesRoutes)
+app.use('public', express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
