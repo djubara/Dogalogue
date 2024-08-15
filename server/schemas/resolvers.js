@@ -1,6 +1,5 @@
 import { GraphQLError } from "graphql"
 import { User, Pet } from "../models/index.js"
-// import { createToken } from "../utils/token.js";
 import jwt from 'jsonwebtoken';
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';

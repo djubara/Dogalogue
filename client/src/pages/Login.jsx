@@ -34,8 +34,6 @@ function Login() {
             console.log(error);
         }
     };
- 
-
   return (
     <>
     <h2>User Login</h2>
@@ -48,6 +46,7 @@ function Login() {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" value={userFormData.password} onChange={handleInputChange} />
       </Form.Group>
+      <button type="submit">Login</button>
     </Form>
     </>
   );
