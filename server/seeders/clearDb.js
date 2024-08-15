@@ -1,4 +1,4 @@
-import models from "../models"
+import * as models from "../models/index.js"
 
 export async function clearDb(db, modelName, collectionName) {
     try {
@@ -7,7 +7,7 @@ export async function clearDb(db, modelName, collectionName) {
         }).toArray()
     
         if (modelExists.length) {
-          await db.dropCollection(collectionName);
+          await db.connection.dropCollection(collectionName);
         }
       } catch (err) {
         throw err;

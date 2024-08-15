@@ -1,23 +1,19 @@
+import mongoose from "mongoose";
+import { clearDb } from "./clearDb.js"
+import { User, Pet } from "../models/index.js"
+import { readFile } from "fs/promises"
+import "dotenv/config"
 
 async function seed() {
-    await mongoose.connect(process.env.MONGODB_URI, {})
+    const db = await mongoose.connect(process.env.MONGODB_URI, {})
+
     try {
-        await cleanDB('Pet', 'pets');
-        await cleanDB('User', 'users');
+        await clearDb(db,'Pet', 'pets');
+        await clearDb(db, 'User', 'users');
     
-        await User.create(userSeeds);
-    
-        for (let i = 0; i < thoughtSeeds.length; i++) {
-        const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-        const user = await User.findOneAndUpdate(
-            { username: thoughtAuthor },
-            {
-            $addToSet: {
-                thoughts: _id,
-            },
-            }
-        );
-        }
+        await User.create(JSON.parse(await readFile("seeders/users.json", "utf-8")));
+        await Pet.create(JSON.parse(await readFile("seeders/pets.json", "utf-8")))
+
     } catch (err) {
         console.error(err);
         process.exit(1);
@@ -27,3 +23,4 @@ async function seed() {
     process.exit(0);
 }
   
+seed()
