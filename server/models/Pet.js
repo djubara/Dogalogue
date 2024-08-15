@@ -8,6 +8,12 @@ const petSchema = new Schema(
             required: false,
             unique: false
         },
+        age: {
+            type: Number,
+            min: 0,
+            required: true,
+            unique: false
+        },
 
         size: {
             type: String,
@@ -22,7 +28,7 @@ const petSchema = new Schema(
         },
         gender: {
             type: String,
-            enum: ["female", "male"],
+            enum: ["Female", "Male"],
             required: true,
             unique: false
         },

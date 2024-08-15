@@ -7,10 +7,11 @@ export default `#graphql
 
         firstName: String!
         lastName: String!
-        photoUrl: String!
 
         created: String!
         modified: String!
+
+        pets: [Pet]!
     }
 
     type Auth {
@@ -55,8 +56,8 @@ export default `#graphql
     }
 
     enum PetGender {
-        male
-        female
+        Male
+        Female
     }
 
     type Pet {
@@ -64,6 +65,7 @@ export default `#graphql
 
         petName: String!
         size: PetSize!
+        age: Int!
         breed: String!
         gender: PetGender!
         gotchaDate: String!
@@ -78,6 +80,7 @@ export default `#graphql
     input PetCreationInput {
         petName: String!
 
+        age: Int!
         size: PetSize!
         breed: String!
         gender: PetGender!

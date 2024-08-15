@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Nav from 'react-bootstrap/Nav';
+import Auth from '../utils/auth';
 
 function Navbar() {
   return (
@@ -19,6 +20,9 @@ function Navbar() {
         </Nav.Item>
         <Nav.Item className="button">
           <Nav.Link href="/login">Login</Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="button" onClick={() => Auth.logout}>
+          <Nav.Link onClick={() => Auth.logout}>Logout</Nav.Link>
         </Nav.Item>
       </Nav>
     </nav>

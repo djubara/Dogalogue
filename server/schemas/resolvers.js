@@ -1,6 +1,13 @@
 import { GraphQLError } from "graphql"
 import { User, Pet } from "../models/index.js"
-import createToken from "../utils/token.js";
+import jwt from 'jsonwebtoken';
+const secret = 'mysecretsshhhhh';
+const expiration = '2h';
+
+function createToken ({ username, email, _id }) {
+    const payload = { username, email, _id };
+    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+};
 
 
 export default {
@@ -18,8 +25,7 @@ export default {
                 throw new GraphQLError("You are not logged in.",
                     { extensions: { code: "UNAUTHENTICATED" } })
             }
-            console.log(user);
-            return User.findOne({ _id: user.id })
+            return User.findOne({ _id: user._id }).populate("pets")
         }
     },
     Mutation: {
