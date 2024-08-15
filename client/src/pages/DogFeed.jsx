@@ -1,5 +1,6 @@
 
 import FeedPosts from '../components/FeedPosts';
+import FeedPostInput from '../components/FeedPostInput';
 import Auth from '../utils/auth';
 
 const DogFeed = () => {
@@ -9,6 +10,7 @@ const DogFeed = () => {
         <div className="feedPage full-withradius border">
             {Auth.loggedIn() ? (
                 <>
+                <FeedPostInput />
             <h1 className="feed-title">The Feed</h1>
            
              <FeedPosts  />
