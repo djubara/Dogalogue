@@ -26,6 +26,11 @@ const postSchema = new Schema(
                     ref: 'User',
                     required: true
                 },
+                postingAs: {
+                    type: Schema.Types.ObjectId,
+                    ref: "Pet",
+                    required: false
+                },
                 content: {
                     type: String,
                     required: true

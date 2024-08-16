@@ -5,62 +5,33 @@ import Card from 'react-bootstrap/Card';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
+import { useParams } from 'react-router-dom';
 
-const Profile = () => {
-    const { loading, data } = useQuery(QUERY_ME);
+const NonAdminProfile = () => {
+    // const { loading, data } = useQuery(QUERY_ME);
+    // Query a user and pass the user's ID from the url params
 
-    const profile = data?.me.pets || {};
-    console.log(profile);
+    // const profile = data?.me.pets || {};
+    // console.log(profile);
+    // if (loading) {
+    //     return <div>Loading...</div>
+    // }
+    const { id } = useParams();
+    console.log(id);
 
-    function renderEnergyLevel(energyLevel) {
-        switch(energyLevel) {
-            case 5:
-                return "High";
-            case 4:
-                return "Medium-High";
-            case 3:
-                return "Medium";
-            case 2:
-                return "Medium-Low";
-            case 1:
-                return "Low";
-            default:
-                return "Unknown";
-        }
-    }
-
-    function renderSize(size) {
-        switch(size) {
-            case 'xl':
-                return "Giant";
-            case 'lg':
-                return "Big";
-            case 'md':
-                return "Medium";
-            case 'sm':
-                return "Small";
-            case 'xs':
-                return "Petite";
-            default:
-                return "Unknown";
-        }
-    }
-
-    if (loading) {
-        return <div>Loading...</div>
-    }
+    // Query a user and pass the user's ID from the url params
 
     return (
 
         <div className="profile">
             {Auth.loggedIn() ? (
                 <>
-            <h2>Profile</h2>
+            <h2>NonAdminProfile</h2>
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={profile.photoUrl} />
+                {/* <Card.Img variant="top" src={profile.photoUrl} /> */}
             </Card>
             <div className="profileContent">
-            {profile.map((profile) => (
+            {/* {profile.map((profile) => (
                 <div className="post individualpostborder" key={profile._id}>
                         <div className="postbox align-items-center">
                             <div className="talk-bubble tri-right left-in round talk-bubble-border">
@@ -68,9 +39,9 @@ const Profile = () => {
                                     <h3>My name is: {profile.petName}</h3>
                                     <p>I am {profile.age} years old {profile.gender}!</p>
                                     <p>My breed is: {profile.breed}</p>
-                                    <p>I have {renderEnergyLevel(profile.energyLevel)} energy!</p>
+                                    <p>I have {profile.energyLevel} energy!</p>
                                     <p>I was adopted on {profile.gotchaDate}!</p>
-                                    <p>I am {renderSize(profile.size)} in size!</p>
+                                    <p>I am {profile.size} in size!</p>
                                     <p>Altered: {profile.altered}</p>
 
 
@@ -79,7 +50,7 @@ const Profile = () => {
                         </div>
                     
                 </div>
-            ))}
+            ))} */}
         </div>
         </>
             ) : (
@@ -89,7 +60,7 @@ const Profile = () => {
     );
 }
 
-export default Profile;
+export default NonAdminProfile;
 
 
 

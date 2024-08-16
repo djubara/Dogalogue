@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const QUERY_USER = gql`
-  query user($email: String!) {
-    user(email: $email) {
+  query user($id: ID!) {
+    user(id: $id) {
       id
       email
       firstName
@@ -63,32 +63,51 @@ query me {
 }`
 
 export const QUERY_POSTS = gql`
-query Posts {
+query Query {
   posts {
     id
-    author {
-      id
-      firstName
-      photoUrl
-    }
     content
     photoUrl
     comments {
-      id
-      author {
-        firstName
-        id
-      }
       content
+      id
       created
     }
     created
-    modified
-    postingAs {
-      petName
+    author {
       id
-      photoUrl
+      firstName
+    }
+    postingAs {
+      id
+      petName
     }
   }
 }
 `
+
+export const QUERY_POST = gql`
+query Post($postId: ID!) {
+  post(id: $postId) {
+    id
+    author {
+      id
+      firstName
+    }
+    postingAs {
+      petName
+      id
+    }
+    content
+    created
+    comments {
+      id
+      author {
+        id
+        firstName
+      }
+      content
+      created
+    }
+  }
+}`

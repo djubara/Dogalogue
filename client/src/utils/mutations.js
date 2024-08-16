@@ -41,3 +41,15 @@ mutation createPost($post: PostCreationInput!) {
   }
 }
 `
+
+export const CREATE_COMMENT = gql`
+mutation createComment($postId: ID!, $comment: CommentCreationInput!) {
+  createComment(postId: $postId, comment: $comment) {
+    id
+    content
+    created
+    postingAs {
+      petName
+    }
+  }
+}`
