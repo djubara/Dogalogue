@@ -1,5 +1,5 @@
 import { GraphQLError } from "graphql"
-import { User, Pet } from "../models/index.js"
+import { User, Pet, Post } from "../models/index.js"
 import jwt from 'jsonwebtoken';
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
@@ -29,6 +29,17 @@ export default {
         }
     },
     Mutation: {
+        createPost: async (parent, { post }, ctx) => {
+            if (!ctx.user) throw new GraphQLError("Must be logged in")
+
+            const createdPost = await (await Post.create({
+                ...post,
+                author: ctx.user._id
+            })).populate("author")
+
+            return createdPost
+        },
+
         createPet: async (parent, { pet }) => {
             return await Pet.create(pet)
         },

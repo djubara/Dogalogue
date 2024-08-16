@@ -100,9 +100,16 @@ export default `#graphql
         users: [User]!
         pets: [Pet]!
     }
+
+    input PostCreationInput {
+        postingAs: String!
+        content: String!
+        photoUrl: String!
+    }
         
     type Mutation {
         createPet(pet: PetCreationInput!): Pet!
+        createPost(post: PostCreationInput!): Post!
 
         register(user: UserCreationInput!, pet: PetCreationInput!): Auth
         login(credentials: LoginInput!): Auth

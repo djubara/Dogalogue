@@ -52,7 +52,7 @@ await Promise.all([
 // app.use('/user', userRoutes);
 
 app.use('/usercontent/images', imagesRoutes)
-app.use('public', express.static("public"))
+app.use('/public', express.static("./public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

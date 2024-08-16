@@ -28,8 +28,16 @@ mutation createDog($petName: String!, $size: DogSize!, $age: Int!, $breed: Strin
     createDog(petName: $petName, size: $size, age: $age, breed: $breed, gender: $gender, gotchaDate: $gotchaDate, energyLevel: $energyLevel, photoUrl: $photoUrl) {
         token
         user {
-            _id
+            id
             firstName
             }
     }
 }`;
+
+export const CREATE_POST = gql`
+mutation createPost($post: PostCreationInput!) {
+  createPost(post: $post) {
+    id
+  }
+}
+`

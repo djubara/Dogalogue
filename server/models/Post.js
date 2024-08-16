@@ -4,7 +4,11 @@ const postSchema = new Schema(
     {
         author: {
             type: Schema.Types.ObjectId,
-            ref: 'User'
+            ref: "User"
+        },
+        postingAs: {
+            type: String,
+            required: true
         },
         content: {
             type: String,
@@ -49,3 +53,5 @@ const postSchema = new Schema(
     id: true
     }
 )
+
+export default model("Post", postSchema)
