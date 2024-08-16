@@ -4,18 +4,22 @@ import Card from 'react-bootstrap/Card';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth';
 
 const Profile = () => {
     const { loading, data } = useQuery(QUERY_ME);
 
     const profile = data?.me.pets || {};
     console.log(profile);
-    if(loading) {
+    if (loading) {
         return <div>Loading...</div>
     }
 
     return (
+
         <div className="profile">
+            {Auth.loggedIn() ? (
+                <>
             <h2>Profile</h2>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={profile.photoUrl} />
@@ -42,7 +46,10 @@ const Profile = () => {
                 </div>
             ))}
         </div>
-
+        </>
+            ) : (
+                <h2>You need to be logged in to see the feed.</h2>
+            )}
         </div>
     );
 }

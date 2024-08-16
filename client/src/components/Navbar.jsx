@@ -3,7 +3,11 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Auth from '../utils/auth';
 
-function Navbar() {
+const Navbar = () => {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  }
   return (
     <>
     <nav className="navbarmargintop">
@@ -21,8 +25,8 @@ function Navbar() {
         <Nav.Item className="button">
           <Nav.Link href="/login">Login</Nav.Link>
         </Nav.Item>
-        <Nav.Item className="button" onClick={() => Auth.logout}>
-          <Nav.Link onClick={() => Auth.logout}>Logout</Nav.Link>
+        <Nav.Item className="button" >
+          <Nav.Link onClick={logout}>Logout</Nav.Link>
         </Nav.Item>
       </Nav>
     </nav>
