@@ -9,15 +9,29 @@ function createToken ({ username, email, _id }) {
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
 };
 
+async function getUsers() {
+    
+}
 
 export default {
     Query: {
         users: async () => {
-            return await User.find().populate("pets");
+            const users = await User.find()
+
+            for await (const user of users) {
+                const userPets = await Pet.find({ owners: { $in: [user._id] }})
+                user.pets = userPets
+            }
+
+            return users
         },
 
         pets: async () => {
-            return await Pet.find()
+            return await Pet.find().populate("owners")
+        },
+
+        pet: async ( parent, { id } ) => {
+            return await Pet.find({ _id: id })
         },
 
         me: async (parent, args, { user }) => {
@@ -25,7 +39,18 @@ export default {
                 throw new GraphQLError("You are not logged in.",
                     { extensions: { code: "UNAUTHENTICATED" } })
             }
-            return User.findOne({ _id: user._id }).populate("pets")
+            
+            const userEntry = await User.findOne({ _id: user._id })
+            const userPets = await Pet.find({ owners: { $in: [user._id] }})
+            userEntry.pets = userPets
+            console.log(userEntry)
+
+            return userEntry
+        },
+
+        posts: async () => {
+            const posts = await Post.find().populate("author", "-password").populate("postingAs")
+            return posts
         }
     },
     Mutation: {

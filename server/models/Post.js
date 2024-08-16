@@ -7,8 +7,9 @@ const postSchema = new Schema(
             ref: "User"
         },
         postingAs: {
-            type: String,
-            required: true
+            type: Schema.Types.ObjectId,
+            ref: "Pet",
+            required: false
         },
         content: {
             type: String,

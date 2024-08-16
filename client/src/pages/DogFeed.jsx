@@ -8,19 +8,23 @@ import Button from "react-bootstrap/Button";
 
 import { useState } from "react";
 import auth from "../utils/auth";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_POST } from "../utils/mutations";
 import { uploadImage } from "../utils/images";
 import NewPostModal from "../components/NewPostModal";
+import { QUERY_POSTS } from "../utils/queries";
 
 const DogFeed = () => {
-  const [showNewPostModal, setShowNewPostModal] = useState(true);
+  const { loading, error, data } = useQuery(QUERY_POSTS);
+
+  const [showNewPostModal, setShowNewPostModal] = useState(false);
 
   return (
     <>
       <div className="feedPage full-withradius border">
         {Auth.loggedIn() ? (
           <>
+            {/* <pre>{JSON.stringify(Auth.getProfile())}</pre> */}
             <header className="d-flex w-100 justify-content-between">
               <h1 className="feed-title">Posts</h1>
               <Button onClick={() => setShowNewPostModal(true)}>
@@ -28,7 +32,7 @@ const DogFeed = () => {
               </Button>
             </header>
 
-            <FeedPosts />
+            {loading ? <p>Loading</p> : <FeedPosts posts={data.posts} />}
           </>
         ) : (
           <h2>You need to be logged in to see the feed.</h2>

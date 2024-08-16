@@ -56,6 +56,13 @@ const petSchema = new Schema(
             unique: false
         },
 
+        owners: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+
         // meta
         created: {
             type: Date,

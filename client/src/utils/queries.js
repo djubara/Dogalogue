@@ -58,15 +58,37 @@ query me {
     pets {
       id
       petName
-      size
-      breed
-      gender
-      gotchaDate
-      altered
-      energyLevel
-      photoUrl
-      created
-      modified
     }
   }
 }`
+
+export const QUERY_POSTS = gql`
+query Posts {
+  posts {
+    id
+    author {
+      id
+      firstName
+      photoUrl
+    }
+    content
+    photoUrl
+    comments {
+      id
+      author {
+        firstName
+        id
+      }
+      content
+      created
+    }
+    created
+    modified
+    postingAs {
+      petName
+      id
+      photoUrl
+    }
+  }
+}
+`

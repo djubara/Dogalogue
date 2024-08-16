@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { CREATE_POST } from "../utils/mutations";
 
@@ -6,9 +6,13 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { uploadImage } from "../utils/images";
+import auth from "../utils/auth";
+import { QUERY_ME } from "../utils/queries";
 
 export default function NewPostModal({ show, setShow }) {
   const [error, setError] = useState(undefined);
+
+  const { loading, error: queryError, data } = useQuery(QUERY_ME);
 
   const [uploadingImage, setUploadingImage] = useState(false);
   const [imageInputFile, setImageInputFile] = useState(undefined);
@@ -46,9 +50,13 @@ export default function NewPostModal({ show, setShow }) {
         post: {
           ...formData,
           photoUrl,
+          postingAs:
+            formData.postingAs === "me" ? undefined : formData.postingAs,
         },
       },
     });
+
+    window.location.reload();
   }
 
   return (
@@ -58,11 +66,14 @@ export default function NewPostModal({ show, setShow }) {
         show={show}
         onHide={() => setShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
+        backdrop="static"
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">New Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <pre>{JSON.stringify(data)}</pre>
+
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>Post as</Form.Label>
@@ -72,12 +83,20 @@ export default function NewPostModal({ show, setShow }) {
                 onChange={(event) =>
                   setFormData({
                     ...formData,
-                    posttingAs: event.target.value,
+                    postingAs: event.target.value,
                   })
                 }
               >
                 <option value="me">Yourself (Cole)</option>
-                <option value="jack">Jack</option>
+                {loading ? (
+                  <option>Loading...</option>
+                ) : (
+                  data.me.pets.map((pet) => (
+                    <option value={pet.id} key={pet.id}>
+                      {pet.petName}
+                    </option>
+                  ))
+                )}
               </Form.Control>
             </Form.Group>
 
