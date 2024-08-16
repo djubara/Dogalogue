@@ -79,7 +79,6 @@ export default `#graphql
 
     input PetCreationInput {
         petName: String!
-
         age: Int!
         size: PetSize!
         breed: String!

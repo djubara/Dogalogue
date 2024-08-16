@@ -11,30 +11,10 @@ import Auth from '../utils/auth';
 function Register() {
   const [validated, setValidated] = useState(false);
   
-  const [userFormData, setUserFormData] = useState({ email: '', password: '', firstName: '', lastName: ''});
-  const [petFormData, setPetFormData] = useState({ petName: '', size: '', age: 0, breed: '', energyLevel: 1, photoUrl: '', altered: false, gotchaDate: '', gender: 'male'});
-  const [register, { error }] = useMutation(ADD_USER);
-  const handleSubmit = async (event) => {
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    // }
+  const [userFormData, setUserFormData] = useState({  firstName: '', lastName: '', email: '', password: ''});
+  const [petFormData, setPetFormData] = useState({ petName: '', size: '', age: 0, breed: '', gender: '', gotchaDate: '', altered: false, energyLevel: 1, photoUrl: ''  });
+  const [register, { error, data }] = useMutation(ADD_USER);
 
-    try {
-      console.log(userFormData);
-      console.log(petFormData);
-      const { data } = await register({
-        variables: { user: userFormData, pet: petFormData },
-      });
-      console.log(data);
-      Auth.login(data.register.token);
-    } catch (e) {
-      console.error(e);
-      console.log(error);
-    }
-    setValidated(true);
-  };
 
   const handleInputChange = (event) => {
     const { target } = event;
@@ -56,6 +36,30 @@ function Register() {
     console.log(userFormData);
     console.log(petFormData);
   }
+
+  const handleSubmit = async (event) => {
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    // }
+
+    try {
+      console.log(userFormData);
+      console.log(petFormData);
+      const { data } = await register({
+        variables: { user: userFormData, pet: petFormData },
+      });
+      console.log(data);
+      Auth.login(data.register.token);
+    } catch (e) {
+      console.error(e);
+      console.log(e);
+    }
+    setValidated(true);
+  };
+
+ 
 
   return (
     <>
@@ -126,7 +130,7 @@ function Register() {
         </Form.Group>
         <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Pet Size</Form.Label>
-          <Form.Select defaultValue="Choose..." name="size" value={petFormData.size} onChange={handleInputChange}>
+          <Form.Select defaultValue="Choose..." name="size" type="text" value={petFormData.size} onChange={handleInputChange}>
             <option>Choose...</option>
             <option>xl</option>
             <option>lg</option>
@@ -141,13 +145,13 @@ function Register() {
           <Form.Label>Pet age</Form.Label>
           <Form.Control
             required
-            type="text"
+            type="number"
             name="age"
             placeholder="Pet age"
             value={petFormData.age}
             onChange={handleInputChange}
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback></Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col}  controlId="validationCustom01">
           <Form.Label>Pet breed</Form.Label>
@@ -160,11 +164,11 @@ function Register() {
             value={petFormData.breed}
             onChange={handleInputChange}
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback></Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Pet Gender</Form.Label>
-          <Form.Select defaultValue="Choose..." name="gender" value={petFormData.gender} onChange={handleInputChange}>
+          <Form.Select defaultValue="Choose..." name="gender" type="text" value={petFormData.gender} onChange={handleInputChange}>
             <option>Choose...</option>
             <option>Male</option>
             <option>Female</option>
@@ -181,11 +185,11 @@ function Register() {
             value={petFormData.gotchaDate}
             onChange={handleInputChange}
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback></Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Is your pet altered?</Form.Label>
-          <Form.Select defaultValue="Choose..." name="altered" value={petFormData.altered} onChange={handleInputChange}>
+          <Form.Select defaultValue="Choose..." name="altered" type="boolean" value={petFormData.altered} onChange={handleInputChange}>
             <option>Choose...</option>
             <option value={true}>Yes</option>
             <option value={false}>No</option>
@@ -193,7 +197,7 @@ function Register() {
         </Form.Group>
         <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Pet's Energy Level</Form.Label>
-          <Form.Select defaultValue="Choose..." name="energyLevel" value={petFormData.energyLevel} onChange={handleInputChange.bind(this)}>
+          <Form.Select defaultValue="Choose..." name="energyLevel" type="number" value={petFormData.energyLevel} onChange={handleInputChange.bind(this)}>
             <option>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -212,7 +216,7 @@ function Register() {
         onChange={handleInputChange}
          />
     </Form.Group>
-      <Button type="submit" >Submit form</Button>
+      <Button type="submit" >Register</Button>
     </Form>
     </>
   );

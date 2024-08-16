@@ -28,7 +28,7 @@ const petSchema = new Schema(
         },
         gender: {
             type: String,
-            enum: ["female", "male"],
+            enum: ["Female", "Male"],
             required: true,
             unique: false
         },

@@ -38,7 +38,7 @@ export default {
 
             const createdUser = await User.create({
                 ...user,
-                pets: [createdPet._id]
+                pets: [createdPet.id]
             })
             return {
                 token: createToken(createdUser),
