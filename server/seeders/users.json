@@ -1,72 +1,37 @@
 [
     {
-        "email": "bkernighan@techfriends.dev",
-        "password": "password01",
-        "firstName": "Bert",
-        "lastName": "Kernighan",
+        "email": "cole.patter@gmail.com",
+        "password": "password",
+        "firstName": "Cole",
+        "lastName": "Patterson",
         "photoUrl": "https://placehold.co/300x300"
     },
     {
-        "email": "mkanatalexander@techfriends.dev",
-        "password": "password02",
-        "firstName": "Mona",
-        "lastName": "Kanatalexander",
+        "email": "firemist1086@gmail.com",
+        "password": "password",
+        "firstName": "Emma",
+        "lastName": "Johnson",
         "photoUrl": "https://placehold.co/300x300"
     },
     {
-        "email": "wtls@techfriends.dev",
-        "password": "password03",
-        "firstName": "Will",
-        "lastName": "Tls",
+        "email": "lrpatter@gmail.com",
+        "password": "password",
+        "firstName": "Lee",
+        "lastName": "Patterson",
         "photoUrl": "https://placehold.co/300x300"
     },
     {
-        "email": "kbeck@techfriends.dev",
-        "password": "password04",
-        "firstName": "Kim",
-        "lastName": "Beck",
+        "email": "mclohn@yahoo.com",
+        "password": "password",
+        "firstName": "Michelle",
+        "lastName": "Lohn",
         "photoUrl": "https://placehold.co/300x300"
     },
     {
-        "email": "evberard@techfriends.dev",
-        "password": "password05",
-        "firstName": "Evan",
-        "lastName": "Berard",
-        "photoUrl": "https://placehold.co/300x300"
-    },
-    {
-        "email": "akay@techfriends.dev",
-        "password": "password06",
-        "firstName": "Ashley",
-        "lastName": "Kay",
-        "photoUrl": "https://placehold.co/300x300"
-    },
-    {
-        "email": "choare@techfriends.dev",
-        "password": "password07",
-        "firstName": "Conan",
-        "lastName": "Hoare",
-        "photoUrl": "https://placehold.co/300x300"
-    },
-    {
-        "email": "dthomas@techfriends.dev",
-        "password": "password08",
-        "firstName": "Daniel",
-        "lastName": "Thomas",
-        "photoUrl": "https://placehold.co/300x300"
-    },
-    {
-        "email": "dknuth@techfriends.dev",
-        "password": "password09",
-        "firstName": "David",
-        "lastName": "Knuth",
-        "photoUrl": "https://placehold.co/300x300"
-    },
-    {
-        "email": "lernantino@techfriends.dev",
-        "password": "password10",
-        "firstName": "Leonnard",
-        "lastName": "Ernantino",
+        "email": "ljohnson@gmail.com",
+        "password": "password",
+        "firstName": "Laura",
+        "lastName": "Johnson",
         "photoUrl": "https://placehold.co/300x300"
     }
 ]

@@ -7,6 +7,7 @@ export default `#graphql
 
         firstName: String!
         lastName: String!
+        photoUrl: String!
 
         created: String!
         modified: String!
@@ -31,6 +32,8 @@ export default `#graphql
         id: ID!
 
         author: User!
+        postingAs: Pet
+
         content: String!
         photoUrl: String
         comments: [Comment]!
@@ -45,6 +48,7 @@ export default `#graphql
 
         firstName: String!
         lastName: String!
+        photoUrl: String!
     }
 
     enum PetSize {
@@ -73,6 +77,8 @@ export default `#graphql
         energyLevel: Int!
         photoUrl: String!
 
+        owners: [User]!
+
         created: String!
         modified: String!
     }
@@ -94,14 +100,26 @@ export default `#graphql
         password: String!
     }
 
+    input PostCreationInput {
+        postingAs: String
+        content: String!
+        photoUrl: String
+    }
+
     type Query {
         me: User!
+
         users: [User]!
+        
+        pet: Pet!
         pets: [Pet]!
+
+        posts: [Post]!
     }
         
     type Mutation {
         createPet(pet: PetCreationInput!): Pet!
+        createPost(post: PostCreationInput!): Post!
 
         register(user: UserCreationInput!, pet: PetCreationInput!): Auth
         login(credentials: LoginInput!): Auth

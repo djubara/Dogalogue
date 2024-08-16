@@ -26,12 +26,16 @@ const userSchema = new Schema(
             required: true,
             unique: false
         },
+        photoUrl: {
+            type: String,
+            required: true
+        },
 
         // pet data
         pets: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "Pet"
+                ref: "Pet",
             }
         ],
 

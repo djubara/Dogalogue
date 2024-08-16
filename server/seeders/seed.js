@@ -14,6 +14,9 @@ async function seed() {
         await User.create(JSON.parse(await readFile("seeders/users.json", "utf-8")));
         await Pet.create(JSON.parse(await readFile("seeders/pets.json", "utf-8")))
 
+        //populate owners
+        // await Pet.find({ name: "Pete" }).
+
     } catch (err) {
         console.error(err);
         process.exit(1);
