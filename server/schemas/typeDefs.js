@@ -104,7 +104,7 @@ export default `#graphql
     input PostCreationInput {
         postingAs: String!
         content: String!
-        photoUrl: String!
+        photoUrl: String
     }
         
     type Mutation {
