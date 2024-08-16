@@ -5,7 +5,7 @@ mutation Mutation($user: UserCreationInput!, $pet: PetCreationInput!) {
   register(user: $user, pet: $pet) {
   token
     user {
-      _id
+      id
       email
     }
   }
@@ -16,7 +16,7 @@ mutation Mutation($credentials: LoginInput!) {
   login(credentials: $credentials) {
     token
     user {
-      _id
+      id
       email
     }
   }

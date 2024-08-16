@@ -55,8 +55,10 @@ export default {
 
             const { email, password } = credentials
             const user = await User.findOne({ email })
+            
+            const passwordValid = await user.checkPassword(password)
 
-            if (!user || !user.checkPassword(password)) {
+            if (!user || !passwordValid) {
                 throw new GraphQLError("Invalid credentials.",
                     { extensions: { code: "UNAUTHENTICATED" } })
             }

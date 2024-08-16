@@ -1,18 +1,22 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { useState } from "react";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 function Login() {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  const [loginError, setLoginError] = useState(null);
+
+  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER, {
     variables: {
-        credentials: userFormData
-    }
-});
-  
+      credentials: userFormData,
+    },
+  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,13 +32,14 @@ function Login() {
       });
       console.log(data);
       Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
-      console.log(error);
+    } catch (error) {
+      console.error(error);
+      setLoginError(error);
     }
+
     setUserFormData({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
@@ -44,11 +49,23 @@ function Login() {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" name="email" value={userFormData.email} onChange={handleInputChange} />
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={userFormData.email}
+            onChange={handleInputChange}
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" name="password" value={userFormData.password} onChange={handleInputChange} />
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={userFormData.password}
+            onChange={handleInputChange}
+          />
         </Form.Group>
         {/* <Button type="submit">Submit form</Button> */}
         <Button
@@ -59,6 +76,23 @@ function Login() {
           Login
         </Button>
       </Form>
+
+      {/* error modal */}
+      <Modal show={loginError !== null}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {loginError
+            ? loginError.message
+            : "An unknown error occured. Please try again!"}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setLoginError(null)}>
+            Okie Dokie!
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

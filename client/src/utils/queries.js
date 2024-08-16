@@ -3,13 +3,13 @@ import { gql } from "@apollo/client"
 export const QUERY_USER = gql`
   query user($email: String!) {
     user(email: $email) {
-      _id
+      id
       email
       firstName
       lastName
       photoUrl
       pet {
-        _id
+        id
         petName
         size
         age
@@ -26,7 +26,7 @@ export const QUERY_USER = gql`
 export const QUERY_PET = gql`
   query pet($petName: String!) {
     pet(petName: $petName){
-        _id
+        id
         petName
         size
         age
@@ -36,7 +36,7 @@ export const QUERY_PET = gql`
         altered
         energyLevel
         user {
-            _id
+            id
             firstName
             lastName
             email
@@ -48,7 +48,7 @@ export const QUERY_PET = gql`
 export const QUERY_ME = gql`
 query me {
   me {
-    _id
+    id
     email
     password
     firstName
@@ -56,7 +56,7 @@ query me {
     created
     modified
     pets {
-      _id
+      id
       petName
       size
       breed
