@@ -33,3 +33,11 @@ mutation createPet($petName: String!, $size: PetSize!, $age: Int!, $breed: Strin
             }
     }
 }`;
+
+export const CREATE_POST = gql`
+mutation createPost($post: PostCreationInput!) {
+  createPost(post: $post) {
+    id
+  }
+}
+`

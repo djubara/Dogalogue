@@ -68,11 +68,7 @@ function Login() {
           />
         </Form.Group>
         {/* <Button type="submit">Submit form</Button> */}
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-        >
+        <Button type="submit" variant="success">
           Login
         </Button>
         <div>
