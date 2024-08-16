@@ -7,6 +7,8 @@ import Profile from './pages/Profile.jsx';
 import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
 import './index.css';
+import NonAdminProfile from './pages/NonAdminProfile.jsx';
+import SinglePost from './pages/SinglePost.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
+      },
+      {
+        path: '/profile/:id',
+        element: <NonAdminProfile />
+      },
+      {
+        path: '/post/:postId',
+        element: <SinglePost />
       }
     ]
   },

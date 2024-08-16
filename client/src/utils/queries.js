@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const QUERY_USER = gql`
-  query user($email: String!) {
-    user(email: $email) {
+  query user($id: ID!) {
+    user(id: $id) {
       id
       email
       firstName
@@ -69,4 +69,4 @@ query me {
       modified
     }
   }
-}`
+}`;

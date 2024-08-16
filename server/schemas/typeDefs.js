@@ -98,6 +98,7 @@ export default `#graphql
         me: User!
         users: [User]!
         pets: [Pet]!
+        user(id: ID!): User!
     }
         
     type Mutation {

@@ -26,6 +26,9 @@ export default {
                     { extensions: { code: "UNAUTHENTICATED" } })
             }
             return User.findOne({ _id: user._id }).populate("pets")
+        },
+        user: async (parent, { id }) => {
+            return await User.findById(id).populate("pets");
         }
     },
     Mutation: {
