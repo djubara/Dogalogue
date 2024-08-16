@@ -18,6 +18,7 @@ const DogFeed = () => {
   const { loading, error, data } = useQuery(QUERY_POSTS);
 
   const [showNewPostModal, setShowNewPostModal] = useState(false);
+  console.log(data);
 
   return (
     <>
@@ -40,7 +41,7 @@ const DogFeed = () => {
       </div>
 
       {/* new post modal */}
-      <NewPostModal show={showNewPostModal} setShow={setShowNewPostModal} />
+      {Auth.loggedIn() ? <NewPostModal show={showNewPostModal} setShow={setShowNewPostModal} /> : <h2>You need to be logged in.</h2>}
     </>
   );
 };

@@ -4,13 +4,13 @@ import jwt from 'jsonwebtoken';
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
-function createToken ({ username, email, _id }) {
+function createToken({ username, email, _id }) {
     const payload = { username, email, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
 };
 
 async function getUsers() {
-    
+
 }
 
 export default {
@@ -19,7 +19,7 @@ export default {
             const users = await User.find()
 
             for await (const user of users) {
-                const userPets = await Pet.find({ owners: { $in: [user._id] }})
+                const userPets = await Pet.find({ owners: { $in: [user._id] } })
                 user.pets = userPets
             }
 
@@ -30,7 +30,7 @@ export default {
             return await Pet.find().populate("owners")
         },
 
-        pet: async ( parent, { id } ) => {
+        pet: async (parent, { id }) => {
             return await Pet.find({ _id: id })
         },
 
@@ -39,25 +39,25 @@ export default {
                 throw new GraphQLError("You are not logged in.",
                     { extensions: { code: "UNAUTHENTICATED" } })
             }
-<<<<<<< HEAD
             return User.findOne({ _id: user._id }).populate("pets")
         },
         user: async (parent, { id }) => {
             return await User.findById(id).populate("pets");
-=======
-            
-            const userEntry = await User.findOne({ _id: user._id })
-            const userPets = await Pet.find({ owners: { $in: [user._id] }})
-            userEntry.pets = userPets
-            console.log(userEntry)
 
-            return userEntry
+            // const userEntry = await User.findOne({ _id: user._id })
+            // const userPets = await Pet.find({ owners: { $in: [user._id] }})
+            // userEntry.pets = userPets
+            // console.log(userEntry)
+
+            // return userEntry
         },
 
         posts: async () => {
-            const posts = await Post.find().populate("author", "-password").populate("postingAs")
+            const posts = await Post.find().populate("author").populate("postingAs")
             return posts
->>>>>>> main
+        },
+        post: async (parent, { id }) => {
+            return await Post.findById(id).populate("author").populate("postingAs").populate("comments.author").populate("comments.postingAs")
         }
     },
     Mutation: {
@@ -89,7 +89,7 @@ export default {
             }
         },
         login: async (parent, { credentials }, ctx) => {
-            
+
             // check if user is already signed in with context
             if (ctx.user) {
                 throw new GraphQLError("You are already logged in.",
@@ -98,7 +98,7 @@ export default {
 
             const { email, password } = credentials
             const user = await User.findOne({ email })
-            
+
             const passwordValid = await user.checkPassword(password)
 
             if (!user || !passwordValid) {
@@ -111,5 +111,18 @@ export default {
                 user
             }
         },
+        createComment: async (parent, { postId, comment }, ctx) => {
+            if (!ctx.user) throw new GraphQLError("Must be logged in")
+
+            const post = await Post.findOneAndUpdate(
+                { _id: postId },
+                { $push: { comments: { ...comment, author: ctx.user._id } } },
+                { new: true }
+            ).populate("comments.author").populate("author").populate("postingAs")
+
+            if (!post) throw new GraphQLError("Post not found")
+
+            return post;
+        }
     }
 }

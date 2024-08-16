@@ -1,49 +1,46 @@
 import { Link, useParams } from 'react-router-dom';
-import posts from "../../data/posts";
+import Auth from '../utils/auth';
+import { Button } from 'react-bootstrap';
 import doggo from "../../public/assets/remi.jpg";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { QUERY_POST } from '../utils/queries';
+import { useQuery } from '@apollo/client';
+import NewCommentModal from '../components/NewCommentModal';
 
 const SinglePost = () => {
-    const [post, setPost] = useState({});
-
+    const [showNewPostModal, setShowNewPostModal] = useState(false);
     const { postId } = useParams();
-    const foundPost = posts.find((post) => post.id === parseInt(postId));
+    const { loading, data } = useQuery(QUERY_POST, {
+        variables: { postId: postId }
+    });
 
-    useEffect(() => {
-        setPost(foundPost);
-    }, [post]);
-
-    if (!post.id) {
+    if (loading) {
         return <h2>Post not found!</h2>
     }
+    console.log(data);
 
     return (
         <>
         <div className="feed-posts">
-                <div className="post individualpostborder" key={post?.id}>
+                <div className="post individualpostborder" key={data.post.id}>
                     <div className="postbox align-items-center">
-                        <Link to={`/profile/${post?.user.id}`} className="text-decoration-none">
+                        <Link to={`/profile/${data.post.author.id}`} className="text-decoration-none">
                             <img className="postimage" src={doggo} />
                         </Link>
                         <div className="talk-bubble tri-right left-in round talk-bubble-border">
                             <div className="talktext">
-                                <h2>{post?.title}</h2>
-                                <p>{post?.content}</p>
+                                <h2>{data.post.postingAs.petName}</h2>
+                                <p>{data.post.content}</p>
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
         <div>
-            <form>
-                {/* Run another query using the user's context to pull their pet data so we can create a option dropdown that allows them to select the pet author */}
-                <textarea
-                    placeholder="Leave a comment..."
-                    rows="3"
-                    cols="50"
-                />
-                <button type="submit">Submit</button>
-            </form>
+        <Button onClick={() => setShowNewPostModal(true)}>
+                New Post
+              </Button>
+        {Auth.loggedIn() ? <NewCommentModal show={showNewPostModal} setShow={setShowNewPostModal} /> : <h2>You need to be logged in.</h2>}
         </div>
         </>
     );

@@ -24,6 +24,7 @@ export default `#graphql
         id: ID!
 
         author: User!
+        postingAs: Pet!
         content: String!
         created: String!
     }
@@ -32,7 +33,7 @@ export default `#graphql
         id: ID!
 
         author: User!
-        postingAs: Pet
+        postingAs: Pet!
 
         content: String!
         photoUrl: String
@@ -101,9 +102,14 @@ export default `#graphql
     }
 
     input PostCreationInput {
-        postingAs: String
+        postingAs: ID!
         content: String!
         photoUrl: String
+    }
+
+    input CommentCreationInput {
+        postingAs: ID!
+        content: String!
     }
 
     type Query {
@@ -115,12 +121,15 @@ export default `#graphql
         pets: [Pet]!
 
         posts: [Post]!
+        post(id: ID!): Post!
         user(id: ID!): User!
     }
         
     type Mutation {
         createPet(pet: PetCreationInput!): Pet!
         createPost(post: PostCreationInput!): Post!
+
+        createComment(postId: ID!, comment: CommentCreationInput!): Comment!
 
         register(user: UserCreationInput!, pet: PetCreationInput!): Auth
         login(credentials: LoginInput!): Auth
