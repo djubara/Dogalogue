@@ -46,8 +46,9 @@ export const QUERY_PET = gql`
 }`;
 
 export const QUERY_ME = gql`
-query Query {
+query me {
   me {
+    _id
     email
     password
     firstName
@@ -55,7 +56,7 @@ query Query {
     created
     modified
     pets {
-      id
+      _id
       petName
       size
       breed
