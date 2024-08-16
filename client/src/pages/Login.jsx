@@ -75,6 +75,10 @@ function Login() {
         >
           Login
         </Button>
+        <div>
+          <p>Don't have an account?</p>
+          <a href="/register">Register here</a>
+        </div>
       </Form>
 
       {/* error modal */}

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-mutation Mutation($user: UserCreationInput!, $pet: PetCreationInput!) {
+mutation register($user: UserCreationInput!, $pet: PetCreationInput!) {
   register(user: $user, pet: $pet) {
   token
     user {
@@ -12,7 +12,7 @@ mutation Mutation($user: UserCreationInput!, $pet: PetCreationInput!) {
 }
 `;
 export const LOGIN_USER = gql`
-mutation Mutation($credentials: LoginInput!) {
+mutation login($credentials: LoginInput!) {
   login(credentials: $credentials) {
     token
     user {
@@ -23,12 +23,12 @@ mutation Mutation($credentials: LoginInput!) {
 }
 `;
 
-export const CREATE_DOG = gql`
-mutation createDog($petName: String!, $size: DogSize!, $age: Int!, $breed: String!, $gender: DogGender!, $gotchaDate: Date!, $energyLevel: Int!  $photoUrl: String!) {
-    createDog(petName: $petName, size: $size, age: $age, breed: $breed, gender: $gender, gotchaDate: $gotchaDate, energyLevel: $energyLevel, photoUrl: $photoUrl) {
+export const CREATE_PET = gql`
+mutation createPet($petName: String!, $size: PetSize!, $age: Int!, $breed: String!, $gender: PetGender!, $gotchaDate: String!, $energyLevel: Int!  $photoUrl: String!) {
+    createPet(petName: $petName, size: $size, age: $age, breed: $breed, gender: $gender, gotchaDate: $gotchaDate, energyLevel: $energyLevel, photoUrl: $photoUrl) {
         token
         user {
-            _id
+            id
             firstName
             }
     }

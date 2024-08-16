@@ -7,7 +7,6 @@ export const QUERY_USER = gql`
       email
       firstName
       lastName
-      photoUrl
       pet {
         id
         petName
@@ -18,6 +17,7 @@ export const QUERY_USER = gql`
         gotchaDate
         altered
         energyLevel
+        photoUrl
         }
     }
   }
@@ -35,12 +35,12 @@ export const QUERY_PET = gql`
         gotchaDate
         altered
         energyLevel
+        photoUrl
         user {
             id
             firstName
             lastName
-            email
-            photoUrl
+            email 
         }
     }
 }`;
