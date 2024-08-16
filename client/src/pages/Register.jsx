@@ -10,10 +10,10 @@ import Auth from '../utils/auth';
 
 function Register() {
   const [validated, setValidated] = useState(false);
-  const [register, { error }] = useMutation(ADD_USER);
+  
   const [userFormData, setUserFormData] = useState({ email: '', password: '', firstName: '', lastName: ''});
   const [petFormData, setPetFormData] = useState({ petName: '', size: '', age: 0, breed: '', energyLevel: 1, photoUrl: '', altered: false, gotchaDate: '', gender: 'male'});
-
+  const [register, { error }] = useMutation(ADD_USER);
   const handleSubmit = async (event) => {
     // const form = event.currentTarget;
     // if (form.checkValidity() === false) {
@@ -212,7 +212,7 @@ function Register() {
         onChange={handleInputChange}
          />
     </Form.Group>
-      <Button type="submit" onSubmit={handleSubmit}>Submit form</Button>
+      <Button type="submit" >Submit form</Button>
     </Form>
     </>
   );
