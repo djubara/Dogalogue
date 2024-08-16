@@ -72,7 +72,7 @@ function Register() {
             value={userFormData.firstName}
             onChange={handleInputChange}
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback></Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="6" controlId="validationCustom02">
           <Form.Label>Last name</Form.Label>
@@ -84,7 +84,7 @@ function Register() {
             value={userFormData.lastName}
             onChange={handleInputChange}
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback></Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="6" className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
