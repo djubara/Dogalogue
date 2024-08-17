@@ -49,7 +49,7 @@ export default `#graphql
 
         firstName: String!
         lastName: String!
-        photoUrl: String!
+        photoUrl: String
     }
 
     enum PetSize {
@@ -93,7 +93,7 @@ export default `#graphql
         gotchaDate: String!
         altered: Boolean!
         energyLevel: Int!
-        photoUrl: String!
+        photoUrl: String
     }
 
     input LoginInput {
@@ -102,7 +102,7 @@ export default `#graphql
     }
 
     input PostCreationInput {
-        postingAs: ID!
+        postingAs: ID
         content: String!
         photoUrl: String
     }
