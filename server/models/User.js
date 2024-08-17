@@ -28,7 +28,7 @@ const userSchema = new Schema(
         },
         photoUrl: {
             type: String,
-            required: true
+            // required: true
         },
 
         // pet data
@@ -78,7 +78,7 @@ userSchema.methods.checkPassword = async function (password) {
 
 //static register method
 userSchema.statics.register = async (email, password, firstName, lastName, photoUrl) => {
-    const exists = await this.findOne({ email})
+    const exists = await this.findOne({ email })
 
     if (exists) {
         throw new Error('Email already in use')
@@ -86,16 +86,16 @@ userSchema.statics.register = async (email, password, firstName, lastName, photo
 }
 
 //static login method
-userSchema.statics.login = async function(email, password) {
+userSchema.statics.login = async function (email, password) {
 
 
-    if(!email || !password) {
+    if (!email || !password) {
         throw new Error('Invalid email or password')
     }
 
     const user = await this.findOne({ email })
 
-    if(!user) {
+    if (!user) {
         throw new Error('User not found')
     }
 

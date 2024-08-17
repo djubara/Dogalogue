@@ -50,8 +50,8 @@ export default function NewPostModal({ show, setShow }) {
         post: {
           ...formData,
           photoUrl,
-          postingAs:
-            formData.postingAs === "me" ? undefined : formData.postingAs,
+          // postingAs:
+          //   formData.postingAs === "me" ? undefined : formData.postingAs,
         },
       },
     });

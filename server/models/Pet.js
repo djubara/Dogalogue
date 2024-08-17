@@ -52,7 +52,7 @@ const petSchema = new Schema(
         },
         photoUrl: {
             type: String,
-            required: true,
+            // required: true,
             unique: false
         },
 
