@@ -46,6 +46,14 @@ const Profile = () => {
         }
     }
 
+    function renderAltered(altered) {
+        if (altered === true) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
+
     if (loading) {
         return <div>Loading...</div>
     }
@@ -71,7 +79,7 @@ const Profile = () => {
                                     <p>I have {renderEnergyLevel(profile.energyLevel)} energy!</p>
                                     <p>I was adopted on {profile.gotchaDate}!</p>
                                     <p>I am {renderSize(profile.size)} in size!</p>
-                                    <p>Altered: {profile.altered}</p>
+                                    <p>Altered: {renderAltered(profile.altered)}</p>
 
 
                                 </div>
