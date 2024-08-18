@@ -58,9 +58,17 @@ query me {
     pets {
       id
       petName
+      size
+        age
+        breed
+        gender
+        gotchaDate
+        altered
+        energyLevel
+        photoUrl
     }
   }
-}`
+}`;
 
 export const QUERY_POSTS = gql`
 query Query {
@@ -84,7 +92,7 @@ query Query {
     }
   }
 }
-`
+`;
 
 export const QUERY_POST = gql`
 query Post($postId: ID!) {
@@ -110,4 +118,4 @@ query Post($postId: ID!) {
       created
     }
   }
-}`
+}`;
