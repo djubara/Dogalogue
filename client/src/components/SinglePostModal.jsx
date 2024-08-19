@@ -61,7 +61,9 @@ export default function SinglePostModal({ post, show, setShow }) {
                 <h6 style={{ marginBottom: "0px" }}>
                   {comment.postingAs
                     ? comment.postingAs.petName
-                    : comment.author.firstName + " " + comment.author.lastName}
+                    : comment.author?.firstName +
+                      " " +
+                      comment.author?.lastName}
                   &nbsp;
                   <span style={{ fontSize: "10pt" }}>
                     {new Date(comment.created).toLocaleString()}

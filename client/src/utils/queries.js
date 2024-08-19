@@ -92,8 +92,18 @@ query Query {
     content
     photoUrl
     comments {
-      content
       id
+      author {
+        id
+        firstName
+        lastName
+      }
+      postingAs {
+        id
+        petName
+        created
+      }
+      content
       created
     }
     created
@@ -169,6 +179,12 @@ query Post($postId: ID!) {
       author {
         id
         firstName
+        lastName
+      }
+      postingAs {
+        id
+        petName
+        created
       }
       content
       created
