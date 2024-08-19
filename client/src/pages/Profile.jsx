@@ -9,7 +9,7 @@ import AddPetModal from "../components/AddPetModal";
 import { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 
-const Profile = () => {
+export default function Profile() {
   const { loading, data } = useQuery(QUERY_ME);
   const [showAddPetModal, setShowAddPetModal] = useState(false);
 
@@ -110,6 +110,4 @@ const Profile = () => {
       <AddPetModal show={showAddPetModal} setShow={setShowAddPetModal} />
     </>
   );
-};
-
-export default Profile;
+}

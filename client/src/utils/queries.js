@@ -109,6 +109,7 @@ query Post($postId: ID!) {
       id
     }
     content
+    photoUrl
     created
     comments {
       id
