@@ -74,13 +74,12 @@ const Profile = () => {
                             <div className="talk-bubble tri-right left-in round talk-bubble-border">
                                 <div className="talktext">
                                     <h3>My name is: {profile.petName}</h3>
-                                    <p>I am {profile.age} years old {profile.gender}!</p>
+                                    <p>I am a {profile.age} year old {profile.gender}!</p>
                                     <p>My breed is: {profile.breed}</p>
                                     <p>I have {renderEnergyLevel(profile.energyLevel)} energy!</p>
                                     <p>I was adopted on {profile.gotchaDate}!</p>
                                     <p>I am {renderSize(profile.size)} in size!</p>
                                     <p>Altered: {renderAltered(profile.altered)}</p>
-
 
                                 </div>
                             </div>

@@ -52,7 +52,7 @@ const SinglePost = () => {
                                 <Link to={`/profile/${comment.author.id}`} className="text-decoration-none">
                                     <img className="postimage" src={getRandomDoggo()} />
                                 </Link>
-                                <div className="comment-bubble tri-comment-right left-in round talk-bubble-border">
+                                <div className="comment-bubble tri-comment-right left-in round comment-talk-bubble-border">
                                     <div className="talktext">
                                         <h2>{comment.postingAs}</h2>
                                         <p>{comment.content}</p>

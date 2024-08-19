@@ -22,6 +22,10 @@
 	color: #4F638C;
 }
 
+.blue {
+	color: #253656;
+}
+
 .cream {
 	color: #F2F2F2;
 }
@@ -172,11 +176,15 @@
 	right: auto;
 	top: 30px;
 	bottom: auto;
-	border-color: #4F638C #4F638C transparent transparent;
+	border-color: #253656 #253656 transparent transparent;
 }
 
 .talk-bubble-border {
 	border: 3px solid #402C25;
+}
+
+.comment-talk-bubble-border {
+	border: 3px solid #253656;
 }
 
 .tri-right.left-in:after {
@@ -278,4 +286,8 @@
 
 .right-item-margin {
 	margin-right: 100px;
+}
+
+.lineheightregisterform {
+	margin-bottom: 20px;
 }
