@@ -33,7 +33,7 @@ export default `#graphql
         id: ID!
 
         author: User!
-        postingAs: Pet!
+        postingAs: Pet
 
         content: String!
         photoUrl: String
@@ -61,8 +61,8 @@ export default `#graphql
     }
 
     enum PetGender {
-        Male
-        Female
+        male
+        female
     }
 
     type Pet {

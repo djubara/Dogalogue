@@ -60,16 +60,14 @@ app.use('/graphql', expressMiddleware(server, {
     context: authMiddleware
 }));
 
-// if we're in production, serve client/dist as static assets
-if (process.env.NODE_ENV === 'production') {
-    const currentDir = dirname(fileURLToPath(import.meta.url))
+// serve client/dist as static assets
+const currentDir = dirname(fileURLToPath(import.meta.url))
 
-    app.use(express.static(path.join(currentDir, '../client/dist')));
+app.use(express.static(path.join(currentDir, '../client/dist')));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(currentDir, '../client/dist/index.html'));
-    });
-}
+app.get('*', (req, res) => {
+    res.sendFile(path.join(currentDir, '../client/dist/index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);

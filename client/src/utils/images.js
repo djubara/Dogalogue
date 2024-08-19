@@ -2,10 +2,13 @@
 
 export async function uploadImage(file) {
     // todo: convert to jpg
-    const res = await fetch("http://localhost:3001/usercontent/images", {
+
+    const baseUrl = "http://localhost:3001"
+
+    const res = await fetch(baseUrl + "/usercontent/images", {
         method: "post",
         headers: {
-            "Content-Type": "image/jpeg"
+            "Content-Type": "image/jpeg",
         },
         body: file
     })

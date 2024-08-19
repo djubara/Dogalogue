@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import { QUERY_ME } from "../utils/queries";
 
 export default function NewCommentModal({ show, setShow }) {
-    const {postId} = useParams();
+  const { postId } = useParams();
   const [error, setError] = useState(undefined);
 
   const { loading, error: queryError, data } = useQuery(QUERY_ME);
@@ -55,7 +55,7 @@ export default function NewCommentModal({ show, setShow }) {
           <Modal.Title id="example-modal-sizes-title-lg">New Comment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <pre>{JSON.stringify(data)}</pre>
+          {/* <pre>{JSON.stringify(data)}</pre> */}
 
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
@@ -70,7 +70,7 @@ export default function NewCommentModal({ show, setShow }) {
                   })
                 }
               >
-                <option value="me">Yourself (Cole)</option>
+                <option value="me">Yourself</option>
                 {loading ? (
                   <option>Loading...</option>
                 ) : (

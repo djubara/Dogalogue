@@ -19,42 +19,44 @@ const SinglePost = () => {
 
     const doggos = [doggo, doggo2, doggo3, doggo4];
 
-    const getRandomDoggo = () => {
-        return doggos[Math.floor(Math.random() * doggos.length)];
-    }
+    const postData = data?.post || {};
+
+    // const getRandomDoggo = () => {
+    //     return doggos[Math.floor(Math.random() * doggos.length)];
+    // }
 
     if (loading) {
         return <h2>Post not found!</h2>
     }
-    console.log(data);
+    console.log(postData);
 
     return (
         <>
             <div className="feed-posts">
-                <div className="post individualpostborder" key={data.post.id}>
+                <div className="post individualpostborder" key={postData.id}>
                     <div className="postbox align-items-center">
-                        <Link to={`/profile/${data.post.author.id}`} className="text-decoration-none">
-                            <img className="postimage" src={doggo} />
+                        <Link to={`/profile/${postData.author.id}`} className="text-decoration-none">
+                            <img className="postimage" src={postData.postingAs.photoUrl} />
                         </Link>
                         <div className="talk-bubble tri-right left-in round talk-bubble-border">
                             <div className="talktext">
-                                <h2>{data.post.postingAs.petName}</h2>
-                                <p>{data.post.content}</p>
+                                <h2>{postData.postingAs.petName}</h2>
+                                <p>{postData.content}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* SHOW ALL COMMENTS ASSOCIATED WITH POST */}
                 <div>
-                    {data.post.comments.map(comment => (
+                    {postData?.comments?.map(comment => (
                         <div className="post individualpostborder" key={comment.id}>
                             <div className="postbox align-items-center">
                                 <Link to={`/profile/${comment.author.id}`} className="text-decoration-none">
-                                    <img className="postimage" src={getRandomDoggo()} />
+                                    <img className="postimage" src={comment.postingAs.photoUrl} />
                                 </Link>
                                 <div className="comment-bubble tri-comment-right left-in round talk-bubble-border">
                                     <div className="talktext">
-                                        <h2>{comment.postingAs}</h2>
+                                        <h2>{comment.postingAs.petName}</h2>
                                         <p>{comment.content}</p>
                                     </div>
                                 </div>

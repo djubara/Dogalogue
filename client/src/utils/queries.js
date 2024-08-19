@@ -50,7 +50,6 @@ query me {
   me {
     id
     email
-    password
     firstName
     lastName
     created
@@ -85,10 +84,12 @@ query Query {
     author {
       id
       firstName
+      lastName
     }
     postingAs {
       id
       petName
+      photoUrl
     }
   }
 }
@@ -101,10 +102,12 @@ query Post($postId: ID!) {
     author {
       id
       firstName
+      lastName
     }
     postingAs {
       petName
       id
+      photoUrl
     }
     content
     created
@@ -113,6 +116,10 @@ query Post($postId: ID!) {
       author {
         id
         firstName
+      }
+      postingAs {
+        photoUrl
+        petName
       }
       content
       created
