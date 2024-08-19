@@ -104,6 +104,10 @@ export default {
                 ...user,
                 pets: [createdPet.id]
             })
+
+            createdPet.owners = [ createdUser._id ]
+            await createdPet.save()
+
             return {
                 token: createToken(createdUser),
                 user: createdUser

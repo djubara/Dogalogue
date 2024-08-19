@@ -4,5 +4,5 @@ import Auth from "../utils/auth";
 import { useParams } from "react-router-dom";
 
 export default function UserProfilePage() {
-  // const { userId }
+  const { userId } = useParams();
 }
