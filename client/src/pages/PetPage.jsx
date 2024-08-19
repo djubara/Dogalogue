@@ -17,51 +17,69 @@ export default function PetPage() {
 
   return (
     <>
-      <h1>{pet.petName}</h1>
+      <section
+        className="d-flex justify-content-between align-items-center"
+        style={{ marginBottom: "10px" }}
+      >
+        <div className="d-flex flex-column gap-3">
+          <section>
+            <h1>{pet.petName}</h1>
+            <h3>About {pet.petName}</h3>
+            <p style={{ marginBottom: "0px" }}>Size: {pet.size}</p>
+            <p style={{ marginBottom: "0px" }}>Breed: {pet.breed}</p>
+            <p style={{ marginBottom: "0px" }}>Gender: {pet.gender}</p>
+            <p style={{ marginBottom: "0px" }}>Adopted: {pet.gotchaDate}</p>
+            <p style={{ marginBottom: "0px" }}>
+              Spayed/Neutered: {pet.altered ? "Yes" : "No"}
+            </p>
+            <p style={{ marginBottom: "0px" }}>
+              Energy Level: {pet.energyLevel}/5
+            </p>
+          </section>
 
-      {pet.photoUrl && (
-        <img
-          src={pet.photoUrl}
-          alt="pet photo"
-          style={{
-            maxWidth: "inherit",
-            maxHeight: "300px",
-            marginBottom: "10px",
-          }}
-        />
-      )}
+          <section>
+            <h3>Owners</h3>
+            <ul>
+              {pet.owners.map((owner) => (
+                <li>
+                  <a href={"/profile/" + owner._id}>
+                    {owner.firstName} {owner.lastName}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
 
-      <section style={{ marginBottom: "10px" }}>
-        <h3>About {pet.petName}</h3>
-        <p style={{ marginBottom: "0px" }}>Size: {pet.size}</p>
-        <p style={{ marginBottom: "0px" }}>Breed: {pet.breed}</p>
-        <p style={{ marginBottom: "0px" }}>Gender: {pet.gender}</p>
-        <p style={{ marginBottom: "0px" }}>Adopted: {pet.gotchaDate}</p>
-        <p style={{ marginBottom: "0px" }}>
-          Spayed/Neutered: {pet.altered ? "Yes" : "No"}
-        </p>
-        <p style={{ marginBottom: "0px" }}>Energy Level: {pet.energyLevel}/5</p>
-      </section>
-
-      <section>
-        <h3>Owners</h3>
-        <ul>
-          {pet.owners.map((owner) => (
-            <li>
-              <a href={"/profile/" + owner._id}>
-                {owner.firstName} {owner.lastName}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div>
+          {pet.photoUrl && (
+            <div
+              style={{
+                width: "300px",
+                height: "300px",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              <img
+                src={pet.photoUrl}
+                alt="pet photo"
+                style={{
+                  display: "inline",
+                  margin: "0 auto",
+                  height: "auto",
+                  width: "100%",
+                }}
+              />
+            </div>
+          )}
+        </div>
       </section>
 
       <section>
         <h3>Posts</h3>
         <Posts posts={posts} />
-        {/* {posts.map((post) => (
-          <Post post={post} />
-        ))} */}
+        {posts.length === 0 && pet.petName + " has no posts yet!"}
       </section>
     </>
   );
