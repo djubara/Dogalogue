@@ -33,7 +33,7 @@ export default {
 
         petPosts: async (parent, { id }) => {
             const pet = await Pet.findOne({ _id: id })
-            const posts = await Post.find({ postingAs: pet }).populate(["postingAs", "author"])
+            const posts = await Post.find({ postingAs: pet }).populate(["postingAs", "author", "comments.author", "comments.postingAs"])
             return posts
         },
 
@@ -60,7 +60,7 @@ export default {
         },
 
         posts: async () => {
-            const posts = await Post.find().populate("author").populate("postingAs")
+            const posts = await Post.find().populate("author").populate("postingAs").populate("comments.author").populate("comments.postingAs")
             return posts
         },
         post: async (parent, { id }) => {
@@ -135,11 +135,17 @@ export default {
         createComment: async (parent, { postId, comment }, ctx) => {
             if (!ctx.user) throw new GraphQLError("Must be logged in")
 
-            const post = await Post.findOneAndUpdate(
-                { _id: postId },
-                { $push: { comments: { ...comment, author: ctx.user._id } } },
+            const post = await Post.findOne({ _id: postId })
+
+            const postingAs = comment.postingAs === "me"? undefined : comment.postingAs
+
+            await post.updateOne(
+                { $push: { comments: { ...comment, author: ctx.user._id, postingAs } } },
                 { new: true }
-            ).populate("comments.author").populate("author").populate("postingAs")
+            )
+            await post.save()
+
+            await post.populate(["postingAs", "author", "comments.author", "comments.postingAs"])
 
             if (!post) throw new GraphQLError("Post not found")
 

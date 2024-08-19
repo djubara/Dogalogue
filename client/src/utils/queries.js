@@ -126,6 +126,13 @@ query PetPosts($petId: ID!) {
         firstName
         lastName
       }
+      postingAs {
+        id
+        petName
+        created
+      }
+      content
+      created
     }
     content
     created

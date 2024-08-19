@@ -20,15 +20,6 @@ export default `#graphql
         user: User!
     }
 
-    type Comment {
-        id: ID!
-
-        author: User!
-        postingAs: Pet!
-        content: String!
-        created: String!
-    }
-
     type Post {
         id: ID!
 
@@ -41,6 +32,15 @@ export default `#graphql
 
         created: String!
         modified: String!
+    }
+
+    type Comment {
+        id: ID!
+
+        author: User!
+        postingAs: Pet
+        content: String!
+        created: String!
     }
 
     input UserCreationInput {    
@@ -108,7 +108,7 @@ export default `#graphql
     }
 
     input CommentCreationInput {
-        postingAs: ID!
+        postingAs: ID
         content: String!
     }
 
@@ -130,7 +130,7 @@ export default `#graphql
         createPet(pet: PetCreationInput!): Pet!
         createPost(post: PostCreationInput!): Post!
 
-        createComment(postId: ID!, comment: CommentCreationInput!): Comment!
+        createComment(postId: ID!, comment: CommentCreationInput!): Post!
 
         register(user: UserCreationInput!, pet: PetCreationInput!): Auth
         login(credentials: LoginInput!): Auth

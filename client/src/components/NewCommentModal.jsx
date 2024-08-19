@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { CREATE_COMMENT } from "../utils/mutations";
@@ -8,12 +7,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { QUERY_ME } from "../utils/queries";
 
-export default function NewCommentModal({ show, setShow }) {
-    const {postId} = useParams();
+export default function NewCommentModal({ post, postId, show, setShow }) {
   const [error, setError] = useState(undefined);
 
   const { loading, error: queryError, data } = useQuery(QUERY_ME);
-
 
   const [createComment, { createCommentError }] = useMutation(CREATE_COMMENT);
 
@@ -22,24 +19,23 @@ export default function NewCommentModal({ show, setShow }) {
     content: "",
   });
 
-  console.log(postId);
-  console.log(formData)
-
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const createdComment = await createComment({
+    const res = await createComment({
       variables: {
-        postId: postId,
-        comment: {
-          ...formData,
-          postingAs:
-            formData.postingAs === "me" ? undefined : formData.postingAs,
-        },
+        postId,
+        comment: formData,
       },
     });
 
-    window.location.reload();
+    if (res?.data?.createComment) {
+      // TODO update post
+      post = res.data.createComment;
+    }
+
+    setShow(false);
+    // window.location.reload();
   }
 
   return (
@@ -52,11 +48,11 @@ export default function NewCommentModal({ show, setShow }) {
         backdrop="static"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">New Comment</Modal.Title>
+          <Modal.Title id="example-modal-sizes-title-lg">
+            New Comment
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <pre>{JSON.stringify(data)}</pre>
-
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>Post as</Form.Label>
