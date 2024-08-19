@@ -17,7 +17,7 @@ router.post("/", raw({ type: "image/jpeg", limit: "5mb" }), async (req, res) => 
         res.status(400).send("Invalid content type")
         return
     }
-    
+
     const imageId = uuidv4()
 
     if (!existsSync(imagesDir)) {
@@ -25,16 +25,16 @@ router.post("/", raw({ type: "image/jpeg", limit: "5mb" }), async (req, res) => 
             await mkdir(join(currentDir, "../public"))
             await mkdir(join(currentDir, "../public/usercontent"))
             await mkdir(imagesDir)
-        } catch(err) {}
+        } catch (err) { }
     }
 
     await writeFile(join(imagesDir + imageId + '.jpeg'), req.body)
 
-    const baseUrl = process.env.NODE_ENV === "production"? process.env.URL : `http://localhost:${process.env.PORT ?? 3001}`
+    const baseUrl = process.env.NODE_ENV === "production" ? process.env.URL : `http://localhost:${process.env.PORT ?? 3001}`
 
-    const imageUrl = join(baseUrl, "/public/usercontent/images/", imageId + ".jpeg")
+    // const imageUrl = join(baseUrl, "/public/usercontent/images/", imageId + ".jpeg")
 
-    res.status(200).send({ imageId, imageUrl })
+    res.status(200).send({ imageId, imageUrl: "/public/usercontent/images/" + imageId + ".jpeg" })
 })
 
 export default router

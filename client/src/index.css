@@ -94,6 +94,10 @@
 	}
 }
 
+.feed-posts {
+	width: 100%;
+}
+
 /* gives space to right of title */
 .titlespace {
 	margin-right: 100px;

@@ -107,6 +107,7 @@ query Post($postId: ID!) {
     postingAs {
       petName
       id
+      photoUrl
     }
     content
     created
@@ -115,6 +116,10 @@ query Post($postId: ID!) {
       author {
         id
         firstName
+      }
+      postingAs {
+        photoUrl
+        petName
       }
       content
       created

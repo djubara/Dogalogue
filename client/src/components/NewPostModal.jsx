@@ -123,7 +123,7 @@ export default function NewPostModal({ show, setShow }) {
                 />
               </Form.Group>
 
-              <ImageUpload />
+              {/* <ImageUpload /> */}
 
               <Button variant="primary" type="submit">
                 Submit
