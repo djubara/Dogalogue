@@ -32,7 +32,7 @@ router.post("/", raw({ type: "image/jpeg", limit: "5mb" }), async (req, res) => 
 
     const baseUrl = process.env.NODE_ENV === "production"? process.env.URL : `http://localhost:${process.env.PORT ?? 3001}`
 
-    const imageUrl = join(baseUrl, "/public/usercontent/images/", imageId + ".jpeg")
+    const imageUrl = baseUrl + "/public/usercontent/images/" + imageId + ".jpeg"
 
     res.status(200).send({ imageId, imageUrl })
 })
