@@ -18,7 +18,11 @@ export default function FeedPosts({ posts }) {
           <div className="post individualpostborder" key={post.id}>
             <div className="postbox align-items-center">
               <Link
-                to={`/profile/${post.author.id}`}
+                to={
+                  post.postingAs
+                    ? `/pets/${post.postingAs.id}`
+                    : `/profile/${post.author.id}`
+                }
                 className="text-decoration-none"
               >
                 {post.postingAs ? (

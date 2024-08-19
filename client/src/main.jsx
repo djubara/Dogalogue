@@ -7,7 +7,9 @@ import Profile from "./pages/Profile.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import "./index.css";
-import NonAdminProfile from "./pages/NonAdminProfile.jsx";
+import UserProfilePage from "./pages/UserProfilePage.jsx";
+import PetsPage from "./pages/PetsPage.jsx";
+import PetPage from "./pages/PetPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +34,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile/:id",
-        element: <NonAdminProfile />,
+        element: <UserProfilePage />,
+      },
+      {
+        path: "/pets",
+        element: <PetsPage />,
+      },
+      {
+        path: "/pets/:petId",
+        element: <PetPage />,
       },
     ],
   },

@@ -9,10 +9,6 @@ function createToken({ username, email, _id }) {
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
 };
 
-async function getUsers() {
-
-}
-
 export default {
     Query: {
         users: async () => {
@@ -31,7 +27,9 @@ export default {
         },
 
         pet: async (parent, { id }) => {
-            return await Pet.find({ _id: id })
+            const pet = await Pet.findOne({ _id: id }).populate("owners", ["_id", "firstName", "lastName"])
+            console.log(pet)
+            return pet
         },
 
         me: async (parent, args, { user }) => {
