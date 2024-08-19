@@ -24,13 +24,9 @@ mutation login($credentials: LoginInput!) {
 `;
 
 export const CREATE_PET = gql`
-mutation createPet($petName: String!, $size: PetSize!, $age: Int!, $breed: String!, $gender: PetGender!, $gotchaDate: String!, $energyLevel: Int!  $photoUrl: String!) {
-    createPet(petName: $petName, size: $size, age: $age, breed: $breed, gender: $gender, gotchaDate: $gotchaDate, energyLevel: $energyLevel, photoUrl: $photoUrl) {
-        token
-        user {
-            id
-            firstName
-            }
+mutation createPet($pet: PetCreationInput!) {
+    createPet(pet: $pet) {
+      id
     }
 }`;
 

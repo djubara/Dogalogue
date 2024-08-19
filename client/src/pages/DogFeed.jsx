@@ -20,28 +20,33 @@ const DogFeed = () => {
   const [showNewPostModal, setShowNewPostModal] = useState(false);
   console.log(data);
 
+  if (!Auth.loggedIn()) {
+    return <h2>You need to be logged in to see the feed.</h2>;
+  }
+
+  if (loading) {
+    return <p>Loading</p>;
+  }
+
+  if (!data) {
+    console.log(data, error);
+    return <p>Loading</p>;
+  }
+
   return (
     <>
       <div className="feedPage full-withradius border">
-        {Auth.loggedIn() ? (
-          <>
-            {/* <pre>{JSON.stringify(Auth.getProfile())}</pre> */}
-            <header className="d-flex w-100 justify-content-between">
-              <h1 className="feed-title">Posts</h1>
-              <Button onClick={() => setShowNewPostModal(true)}>
-                New Post
-              </Button>
-            </header>
+        {/* <pre>{JSON.stringify(Auth.getProfile())}</pre> */}
+        <header className="d-flex w-100 justify-content-between">
+          <h1 className="feed-title">Posts</h1>
+          <Button onClick={() => setShowNewPostModal(true)}>New Post</Button>
+        </header>
 
-            {loading ? <p>Loading</p> : <FeedPosts posts={data.posts} />}
-          </>
-        ) : (
-          <h2>You need to be logged in to see the feed.</h2>
-        )}
+        <FeedPosts posts={data.posts} />
       </div>
 
       {/* new post modal */}
-      {Auth.loggedIn() ? <NewPostModal show={showNewPostModal} setShow={setShowNewPostModal} /> : <h2>You need to be logged in.</h2>}
+      <NewPostModal show={showNewPostModal} setShow={setShowNewPostModal} />
     </>
   );
 };

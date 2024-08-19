@@ -39,7 +39,11 @@ export default {
                 throw new GraphQLError("You are not logged in.",
                     { extensions: { code: "UNAUTHENTICATED" } })
             }
-            return User.findOne({ _id: user._id }).populate("pets")
+
+            const foundUser = await User.findOne({ _id: user._id })
+            await foundUser.populate("pets")
+
+            return foundUser
         },
         user: async (parent, { id }) => {
             return await User.findById(id).populate("pets");
@@ -64,16 +68,27 @@ export default {
         createPost: async (parent, { post }, ctx) => {
             if (!ctx.user) throw new GraphQLError("Must be logged in")
 
+            const postingAs = post.postingAs === "me"? undefined : post.postingAs
+
             const createdPost = await (await Post.create({
                 ...post,
-                author: ctx.user._id
+                author: ctx.user._id,
+                postingAs
             })).populate("author")
 
             return createdPost
         },
 
-        createPet: async (parent, { pet }) => {
-            return await Pet.create(pet)
+        createPet: async (parent, { pet }, ctx) => {
+            
+            pet.owners = [ctx.user._id]
+            const createdPet = await Pet.create(pet)
+            
+            const user = await User.findOne({ _id: ctx.user._id })
+            user.pets.push(createdPet._id)
+            await user.save()
+            
+            return createdPet
         },
 
         register: async (parent, { user, pet }) => {
