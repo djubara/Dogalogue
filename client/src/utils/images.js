@@ -3,7 +3,7 @@
 export async function uploadImage(file) {
     // todo: convert to jpg
 
-    const baseUrl = "http://localhost:3001"
+    const baseUrl = "https://dogalogue.onrender.com"
 
     const res = await fetch(baseUrl + "/usercontent/images", {
         method: "post",
