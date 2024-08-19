@@ -33,7 +33,7 @@ export default function NewPostModal({ show, setShow }) {
       variables: {
         post: {
           ...formData,
-          photoUrl,
+          photoUrl: imageUrl,
         },
       },
     });
