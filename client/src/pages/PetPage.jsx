@@ -1,13 +1,18 @@
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
-import { QUERY_PET } from "../utils/queries";
+import { QUERY_PET, QUERY_PET_POSTS } from "../utils/queries";
+import Post from "../components/Post";
+import Posts from "../components/Posts";
 
 export default function PetPage() {
   const { petId } = useParams();
   const petQuery = useQuery(QUERY_PET, { variables: { petId } });
   const pet = petQuery?.data?.pet;
 
-  if (petQuery.loading) return <p>Loading...</p>;
+  const postsQuery = useQuery(QUERY_PET_POSTS, { variables: { petId } });
+  const posts = postsQuery?.data?.petPosts;
+
+  if (petQuery.loading || postsQuery.loading) return <p>Loading...</p>;
   if (!petQuery.data) return <p>Pet not found.</p>;
 
   return (
@@ -43,10 +48,20 @@ export default function PetPage() {
         <ul>
           {pet.owners.map((owner) => (
             <li>
-              {owner.firstName} {owner.lastName}
+              <a href={"/profile/" + owner._id}>
+                {owner.firstName} {owner.lastName}
+              </a>
             </li>
           ))}
         </ul>
+      </section>
+
+      <section>
+        <h3>Posts</h3>
+        <Posts posts={posts} />
+        {/* {posts.map((post) => (
+          <Post post={post} />
+        ))} */}
       </section>
     </>
   );

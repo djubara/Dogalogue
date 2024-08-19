@@ -28,8 +28,13 @@ export default {
 
         pet: async (parent, { id }) => {
             const pet = await Pet.findOne({ _id: id }).populate("owners", ["_id", "firstName", "lastName"])
-            console.log(pet)
             return pet
+        },
+
+        petPosts: async (parent, { id }) => {
+            const pet = await Pet.findOne({ _id: id })
+            const posts = await Post.find({ postingAs: pet }).populate(["postingAs", "author"])
+            return posts
         },
 
         me: async (parent, args, { user }) => {
@@ -90,7 +95,10 @@ export default {
         },
 
         register: async (parent, { user, pet }) => {
-            const createdPet = await Pet.create(pet)
+            const createdPet = await Pet.create({
+                ...pet,
+                owners: [user._id]
+            })
 
             const createdUser = await User.create({
                 ...user,

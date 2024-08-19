@@ -38,7 +38,7 @@ export default function SinglePostModal({ post, show, setShow }) {
       </Modal.Body>
 
       <Modal.Footer className="d-block">
-        <p>Posted on {post.created}</p>
+        <p>Posted on {new Date(post.created).toLocaleString()}</p>
       </Modal.Footer>
     </Modal>
   );

@@ -119,6 +119,7 @@ export default `#graphql
         user(id: ID!): User!
         
         pet(id: ID!): Pet!
+        petPosts(id: ID!): [Post]!
         pets: [Pet]!
 
         posts: [Post]!

@@ -111,6 +111,36 @@ query Query {
 }
 `;
 
+export const QUERY_PET_POSTS = gql`
+query PetPosts($petId: ID!) {
+  petPosts(id: $petId) {
+    author {
+      id
+      firstName
+      lastName
+    }
+    comments {
+      id
+      author {
+        id
+        firstName
+        lastName
+      }
+    }
+    content
+    created
+    id
+    modified
+    photoUrl
+    postingAs {
+      id
+      petName
+      photoUrl
+    }
+  }
+}
+`;
+
 export const QUERY_POST = gql`
 query Post($postId: ID!) {
   post(id: $postId) {
