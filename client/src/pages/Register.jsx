@@ -86,7 +86,12 @@ function Register() {
       <h2>User Information</h2>
       <Form validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-6">
-          <Form.Group as={Col} md="6" controlId="validationCustom01">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            md="6"
+            controlId="validationCustom01"
+          >
             <Form.Label>First Name</Form.Label>
             <Form.Control
               required
@@ -98,7 +103,12 @@ function Register() {
             />
             <Form.Control.Feedback></Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="6" controlId="validationCustom02">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            md="6"
+            controlId="validationCustom02"
+          >
             <Form.Label>Last name</Form.Label>
             <Form.Control
               required
@@ -111,6 +121,7 @@ function Register() {
             <Form.Control.Feedback></Form.Control.Feedback>
           </Form.Group>
           <Form.Group
+            className="line-height-register"
             as={Col}
             md="6"
             className="mb-3"
@@ -130,6 +141,7 @@ function Register() {
             </Form.Text>
           </Form.Group>
           <Form.Group
+            className="line-height-register"
             as={Col}
             md="6"
             className="mb-3"
@@ -148,7 +160,11 @@ function Register() {
         </Row>
         <h2>Pet Information</h2>
         <Row className="mb-6">
-          <Form.Group as={Col} controlId="validationCustom01">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="validationCustom01"
+          >
             <Form.Label>Pet name</Form.Label>
             <Form.Control
               required
@@ -160,7 +176,11 @@ function Register() {
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} controlId="formGridState">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="formGridState"
+          >
             <Form.Label>Pet Size</Form.Label>
             <Form.Select
               defaultValue="Choose..."
@@ -179,7 +199,11 @@ function Register() {
           </Form.Group>
         </Row>
         <Row className="mb-6">
-          <Form.Group as={Col} controlId="validationCustom01">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="validationCustom01"
+          >
             <Form.Label>Pet age</Form.Label>
             <Form.Control
               required
@@ -191,7 +215,11 @@ function Register() {
             />
             <Form.Control.Feedback></Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} controlId="validationCustom01">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="validationCustom01"
+          >
             <Form.Label>Pet breed</Form.Label>
 
             <Form.Control
@@ -204,7 +232,11 @@ function Register() {
             />
             <Form.Control.Feedback></Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} controlId="formGridState">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="formGridState"
+          >
             <Form.Label>Pet Gender</Form.Label>
             <Form.Select
               defaultValue="Choose..."
@@ -220,7 +252,11 @@ function Register() {
           </Form.Group>
         </Row>
         <Row className="mb-6">
-          <Form.Group as={Col} controlId="validationCustom01">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="validationCustom01"
+          >
             <Form.Label>Pet's Gotcha Date!</Form.Label>
             <Form.Control
               required
@@ -231,7 +267,11 @@ function Register() {
             />
             <Form.Control.Feedback></Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} controlId="formGridState">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="formGridState"
+          >
             <Form.Label>Is your pet altered?</Form.Label>
             <Form.Select
               defaultValue="Choose..."
@@ -245,7 +285,11 @@ function Register() {
               <option value={false}>No</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group as={Col} controlId="formGridState">
+          <Form.Group
+            className="line-height-register"
+            as={Col}
+            controlId="formGridState"
+          >
             <Form.Label>Pet's Energy Level</Form.Label>
             <Form.Select
               defaultValue="Choose..."

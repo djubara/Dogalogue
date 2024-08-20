@@ -15,8 +15,7 @@ export default function NewPostModal({ show, setShow }) {
 
   const { loading, error: queryError, data } = useQuery(QUERY_ME);
 
-  const [uploadingImage, setUploadingImage] = useState(false);
-  const [imageInputFile, setImageInputFile] = useState(undefined);
+  const [imageUrl, setImageUrl] = useState("");
 
   const [createPost, { createPostError }] = useMutation(CREATE_POST);
 
@@ -30,27 +29,11 @@ export default function NewPostModal({ show, setShow }) {
     event.preventDefault();
     // console.log(userProfile);
 
-    let photoUrl = undefined;
-    if (imageInputFile) {
-      try {
-        setUploadingImage(true);
-        photoUrl = await uploadImage(imageInputFile);
-        setUploadingImage(false);
-      } catch (error) {
-        setUploadingImage(false);
-        setError(
-          new Error(
-            "An error occured while uploading your image: " + error.message
-          )
-        );
-      }
-    }
-
     const createdPost = await createPost({
       variables: {
         post: {
           ...formData,
-          photoUrl,
+          photoUrl: imageUrl,
         },
       },
     });
@@ -123,25 +106,12 @@ export default function NewPostModal({ show, setShow }) {
                 />
               </Form.Group>
 
-              {/* <ImageUpload /> */}
+              <ImageUpload imageUrl={imageUrl} setImageUrl={setImageUrl} />
 
               <Button variant="primary" type="submit">
                 Submit
               </Button>
             </Form>
-          </Modal.Body>
-        </Modal>
-
-        {/* photo upload modal */}
-        <Modal show={uploadingImage}>
-          <Modal.Header>
-            <Modal.Title>Uploading Image</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className="d-flex justify-content-center">
-            <img
-              src="https://i.pinimg.com/originals/00/94/18/009418460183d05cbbff41179436b3eb.gif"
-              alt="loading gears"
-            />
           </Modal.Body>
         </Modal>
 

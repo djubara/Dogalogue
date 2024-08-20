@@ -24,8 +24,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_PET = gql`
-  query pet($petName: String!) {
-    pet(petName: $petName){
+  query pet($petId: ID!) {
+    pet(id: $petId){
         id
         petName
         size
@@ -36,14 +36,30 @@ export const QUERY_PET = gql`
         altered
         energyLevel
         photoUrl
-        user {
+        owners {
             id
             firstName
             lastName
-            email 
         }
     }
 }`;
+
+export const QUERY_PETS = gql`
+  query Pets {
+  pets {
+    id
+      petName
+      size
+      age
+      breed
+      gender
+      gotchaDate
+      altered
+      energyLevel
+      photoUrl
+  }
+}
+`;
 
 export const QUERY_ME = gql`
 query me {
@@ -76,8 +92,18 @@ query Query {
     content
     photoUrl
     comments {
-      content
       id
+      author {
+        id
+        firstName
+        lastName
+      }
+      postingAs {
+        id
+        petName
+        created
+      }
+      content
       created
     }
     created
@@ -86,6 +112,43 @@ query Query {
       firstName
       lastName
     }
+    postingAs {
+      id
+      petName
+      photoUrl
+    }
+  }
+}
+`;
+
+export const QUERY_PET_POSTS = gql`
+query PetPosts($petId: ID!) {
+  petPosts(id: $petId) {
+    author {
+      id
+      firstName
+      lastName
+    }
+    comments {
+      id
+      author {
+        id
+        firstName
+        lastName
+      }
+      postingAs {
+        id
+        petName
+        created
+      }
+      content
+      created
+    }
+    content
+    created
+    id
+    modified
+    photoUrl
     postingAs {
       id
       petName
@@ -110,12 +173,19 @@ query Post($postId: ID!) {
       photoUrl
     }
     content
+    photoUrl
     created
     comments {
       id
       author {
         id
         firstName
+        lastName
+      }
+      postingAs {
+        id
+        petName
+        created
       }
       postingAs {
         photoUrl

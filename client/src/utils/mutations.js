@@ -42,10 +42,26 @@ export const CREATE_COMMENT = gql`
 mutation createComment($postId: ID!, $comment: CommentCreationInput!) {
   createComment(postId: $postId, comment: $comment) {
     id
-    content
-    created
+    author {
+      id
+      firstName
+      lastName
+    }
     postingAs {
       petName
+      id
+    }
+    content
+    photoUrl
+    created
+    comments {
+      id
+      author {
+        id
+        firstName
+      }
+      content
+      created
     }
   }
 }`
