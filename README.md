@@ -1,6 +1,8 @@
 > # Dogalogue
 
  > ![Github license](https://img.shields.io/badge/license-MIT-blue.svg)
+   
+
 
   > ## Table of Contents
 
@@ -79,6 +81,8 @@ In order to install this program, you can clone the repository titled Dogalogue 
 > ## Usage
 
 Once you’ve started the deployed application. You will be prompted to register an account. You will enter your email and password to create an account. Once logged in, you’ll be able to search for dogs you want your best friend to socialize with.
+
+[Live Website](https://dogalogue.onrender.com/)
 
 > ## Contributors
 
